@@ -253,3 +253,24 @@ nav.main .nav-langs{ display:none; }
   nav.main .nav-langs{ display:flex; gap:.8rem; font-size:.95rem; padding-top:1rem; border-top:1px solid var(--line-soft); width:100%; }
   nav.main .nav-langs a{ font-size:.95rem; }
 }
+
+/* ---------- Startpagina (hub) ---------- */
+.hub-hero-grid{ display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+.hub-banner{ width:100%; height:auto; border-radius:2px; border:1px solid var(--line); box-shadow:0 30px 70px -40px rgba(201,162,39,.5); }
+@media (max-width:900px){ .hub-hero-grid{ grid-template-columns:1fr; gap:2rem; } .hub-banner{ order:-1; } }
+.hub-grid{ grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); }
+a.hub-card{ display:flex; flex-direction:column; text-decoration:none; color:inherit; transition:border-color .18s ease, transform .18s ease; }
+a.hub-card:hover{ border-color:var(--gold); transform:translateY(-2px); }
+a.hub-card p.tagline{ font-family:'Bodoni Moda',serif; color:var(--gold-bright); font-size:.95rem; margin:0 0 .7rem; }
+a.hub-card .card-link{ margin-top:auto; padding-top:1rem; display:inline-block; font-size:.72rem; letter-spacing:.08em; color:var(--gold); }
+a.hub-card:hover .card-link{ color:var(--gold-bright); }
+
+/* ---------- Kleine telefoons (≤400px): niets steekt buiten het scherm ---------- */
+.hub-hero-grid > *{ min-width:0; }
+@media (max-width:600px){
+  .group-strip a.other-site{ white-space:normal; }
+}
+@media (max-width:400px){
+  .wrap{ padding:0 16px; }
+  .hero h1, .page-head h1{ font-size:1.75rem; overflow-wrap:break-word; }
+}

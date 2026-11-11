@@ -18,6 +18,27 @@ const groupStrip = {
 export default {
   homeButton,
 
+  // Startpagina (/): kiest het juiste MSNA-bedrijf. Geen menu en geen home-knop.
+  hub: {
+    isHub: true,
+    wordmark: "GROUP SERVICES",
+    base: "/",
+    langs: ["nl"],
+    slugs: { home: { nl: "" }, contact: { nl: "/group/contact/" } },
+    navOrder: [],
+    ctaKey: "contact",
+    t: {
+      nl: {
+        sub: "ONDERNEMERSCHAP · DIENSTVERLENING · MODE · VASTGOED",
+        cta: "Neem contact op",
+        navHeading: "MSNA-bedrijven",
+        blurb: "MSNA Group Services brengt ondernemerschap, dienstverlening, mode en vastgoed samen onder één groep.",
+        bottom: "© 2026 MSNA Group Services. Alle rechten voorbehouden. Website in ontwikkeling — bedrijfsgegevens en juridische informatie volgen voor publicatie.",
+        privacy: "Privacyverklaring",
+      },
+    },
+  },
+
   cleaning: {
     wordmark: "CLEANING &amp; SUPPORT",
     base: "/cleaning/",

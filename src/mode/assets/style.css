@@ -149,3 +149,5 @@
   .nav .wrap > div:last-child{ gap:.5rem !important; }
   .lang-switch{ gap:.15rem; }
 }
+@media (max-width:900px){ .nav-links{ display:none; } }
+@media (max-width:480px){ .btn{ white-space:normal; text-align:center; } }

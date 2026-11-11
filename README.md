@@ -12,7 +12,7 @@ Startpagina plus vier websites voor MSNA Group Services, gebouwd met [Eleventy](
 | `/privacy/` | Privacyverklaring en cookies (gedeeld) | concept |
 
 `/cleaning/` en `/mode/` kiezen automatisch de taal van de browser (NL/FR, anders EN).
-Cleaning & Support, Group Services en Estate delen één ontwerp (zwart/goud, Bodoni Moda + Jost), afkomstig van de oorspronkelijke Cleaning-site. MSNA-Mode heeft een eigen editorial ontwerp. Elke site heeft rechtsboven een **MSNA home**-knop terug naar de startpagina.
+De startpagina, Cleaning & Support, Group Services en Estate delen één ontwerp (zwart/goud, Bodoni Moda + Jost), afkomstig van de oorspronkelijke Cleaning-site. MSNA-Mode heeft een eigen editorial ontwerp. Elke site (behalve de startpagina zelf) heeft rechtsboven een **MSNA home**-knop terug naar de startpagina.
 
 ## Lokaal bekijken
 
@@ -28,10 +28,9 @@ npm start        # http://localhost:8080
 | Telefoon, contactpersoon, e-mail, adres, ondernemingsnummer, formulier-endpoint | `src/_data/site.js` |
 | De vier bedrijfstegels (hub, footer, groepssite) | `src/_data/companies.js` |
 | Pagina's | `src/group/`, `src/cleaning/<taal>/`, `src/mode/<taal>/`, `src/estate/` |
-| **Cleaning, Group, Estate:** menu, footer en teksten (per taal) | `src/_data/sites.js` |
-| **Cleaning, Group, Estate:** gedeelde header/footer | `src/_includes/layouts/msna-site.njk` |
-| **Cleaning, Group, Estate:** stijl en script | `src/assets/css/msna.css`, `src/assets/js/msna.js` |
-| Startpagina (hub): stijl en tekst | `src/index.njk`, `src/assets/css/style.css`, `src/_data/brands.js` |
+| **Startpagina, Cleaning, Group, Estate:** menu, footer en teksten (per taal) | `src/_data/sites.js` |
+| **Startpagina, Cleaning, Group, Estate:** gedeelde header/footer | `src/_includes/layouts/msna-site.njk` |
+| **Startpagina, Cleaning, Group, Estate:** stijl en script | `src/assets/css/msna.css`, `src/assets/js/msna.js` |
 | **MODE:** stijl, wachtlijst-script | `src/mode/assets/` |
 
 Elke pagina (bv. `src/cleaning/nl/services.njk` of `src/group/over.njk`) bevat alleen de eigen inhoud; header, menu, taalkeuze, home-knop en footer komen uit de gedeelde layout.

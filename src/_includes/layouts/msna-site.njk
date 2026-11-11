@@ -1,5 +1,5 @@
-{#- Gedeelde layout voor Cleaning & Support, Group Services en Estate.
-    Nodig in de front matter: siteKey (cleaning|group|estate), lang, pageKey, title. -#}
+{#- Gedeelde layout voor de startpagina, Cleaning & Support, Group Services en Estate.
+    Nodig in de front matter: siteKey (hub|cleaning|group|estate), lang, pageKey, title. -#}
 {%- set s = sites[siteKey] -%}
 {%- set t = s.t[lang] -%}
 {%- macro url(key, l) -%}
@@ -29,31 +29,31 @@
         <span class="sub">{{ t.sub }}</span>
       </span>
     </a>
-    <nav class="main">
+    {% if s.navOrder.length %}<nav class="main">
       {% for key in s.navOrder %}<a href="{{ url(key, lang) }}"{% if key == pageKey %} class="active" aria-current="page"{% endif %}>{{ t.nav[key] }}</a>
       {% endfor %}
       {% if s.langs.length > 1 %}<div class="lang-switch nav-langs">{% for l in s.langs %}{% if not loop.first %}<span class="sep">/</span>{% endif %}<a{% if l == lang %} class="current"{% endif %} href="{{ url(pageKey, l) }}" hreflang="{{ l }}">{{ l | upper }}</a>{% endfor %}</div>{% endif %}
-    </nav>
+    </nav>{% endif %}
     <div class="head-right">
-      <a class="home-btn" href="/" title="{{ sites.homeButton[lang] }}" aria-label="{{ sites.homeButton[lang] }}">
+      {% if not s.isHub %}<a class="home-btn" href="/" title="{{ sites.homeButton[lang] }}" aria-label="{{ sites.homeButton[lang] }}">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 9.5V20h5v-5.5h3V20h5V9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
         <span>{{ sites.homeButton[lang] }}</span>
-      </a>
+      </a>{% endif %}
       {% if s.langs.length > 1 %}<div class="lang-switch">{% for l in s.langs %}{% if not loop.first %}<span class="sep">/</span>{% endif %}<a{% if l == lang %} class="current"{% endif %} href="{{ url(pageKey, l) }}" hreflang="{{ l }}">{{ l | upper }}</a>{% endfor %}</div>{% endif %}
       <a class="btn btn-gold btn-sm hide-mobile" href="{{ url(s.ctaKey, lang) }}">{{ t.cta }}</a>
-      <button class="menu-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      {% if s.navOrder.length %}<button class="menu-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>{% endif %}
     </div>
   </div>
 </header>
 {{ content | safe }}
-  <div class="group-strip">
+  {% if not s.isHub %}<div class="group-strip">
     <div class="wrap row">
       <p>{{ t.strip }}</p>
       <span>
         {% for link in t.stripLinks %}<a class="other-site" href="{{ link.url }}">{{ link.label }} &rarr;<span class="tag">{{ link.tag }}</span></a>&nbsp;·&nbsp; {% endfor %}<a class="other-site" href="/">{{ sites.homeButton[lang] }} &rarr;</a>
       </span>
     </div>
-  </div>
+  </div>{% endif %}
   <footer class="site">
     <div class="wrap">
       <div class="foot-grid">
@@ -66,7 +66,8 @@
         </div>
         <div>
           <h4>{{ t.navHeading }}</h4>
-          <ul>{% for key in s.navOrder %}<li><a href="{{ url(key, lang) }}">{{ t.nav[key] }}</a></li>{% endfor %}</ul>
+          {% if s.isHub %}<ul>{% for c in companies %}<li><a href="{{ c.url }}">MSNA {{ c.name }}</a></li>{% endfor %}</ul>
+          {% else %}<ul>{% for key in s.navOrder %}<li><a href="{{ url(key, lang) }}">{{ t.nav[key] }}</a></li>{% endfor %}</ul>{% endif %}
         </div>
         <div>
           <h4>Contact</h4>

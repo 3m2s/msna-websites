@@ -9,14 +9,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/mode/assets");
 
   // Lettertypes lokaal hosten (geen Google Fonts = geen extra cookies/tracking)
-  const fonts = {
-    "cormorant-500": "@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2",
-    "cormorant-600": "@fontsource/cormorant-garamond/files/cormorant-garamond-latin-600-normal.woff2",
-    "inter-400": "@fontsource/inter/files/inter-latin-400-normal.woff2",
-    "inter-500": "@fontsource/inter/files/inter-latin-500-normal.woff2",
-    "inter-600": "@fontsource/inter/files/inter-latin-600-normal.woff2",
-  };
-  // Bodoni Moda + Jost voor de Cleaning- en MODE-sites
+  const fonts = {};
+  // Bodoni Moda + Jost voor alle MSNA-sites
   for (const w of [400, 500, 600, 700]) {
     fonts[`bodoni-${w}`] = `@fontsource/bodoni-moda/files/bodoni-moda-latin-${w}-normal.woff2`;
   }
