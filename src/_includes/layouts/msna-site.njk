@@ -1,47 +1,51 @@
-{#- Gedeelde layout voor de startpagina, Cleaning & Support, Group Services en Estate.
-    Nodig in de front matter: siteKey (hub|cleaning|group|estate), lang, pageKey, title. -#}
+{#- Gedeelde layout voor de startpagina (Group Services), Cleaning & Support en Estate.
+    Nodig in de front matter: siteKey (hub|cleaning|estate), lang, pageKey, title.
+    Alle links lopen via msnaUrl, zodat de bezoeker in dezelfde taal blijft. -#}
 {%- set s = sites[siteKey] -%}
 {%- set t = s.t[lang] -%}
-{%- macro url(key, l) -%}
-{%- set slug = s.slugs[key][l] -%}
-{%- if slug.startsWith("/") -%}{{ slug }}{%- else -%}{{ s.base }}{% if s.langs.length > 1 %}{{ l }}/{% endif %}{{ slug }}{%- endif -%}
-{%- endmacro -%}
 <!doctype html>
 <html lang="{{ lang }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{{ title }}</title>
+{% if s.isHub and pageKey == "home" and lang == s.rootLang %}<script>
+  // Eerder voor Engels of Frans gekozen? Dan meteen naar die startpagina.
+  try { var l = localStorage.getItem("msna-lang"); if (l === "en" || l === "fr") location.replace(l + "/"); } catch (e) {}
+</script>
+{% endif %}<title>{{ title }}</title>
 {% if description %}<meta name="description" content="{{ description }}">{% endif %}
-{% if s.langs.length > 1 %}{% for l in s.langs %}<link rel="alternate" hreflang="{{ l }}" href="{{ url(pageKey, l) }}">
-{% endfor %}{% endif %}<link rel="icon" type="image/png" href="/assets/img/logo-mark.png">
+{% for l in s.langs %}<link rel="alternate" hreflang="{{ l }}" href="{{ (siteKey + ':' + pageKey) | msnaUrl(l) }}">
+{% endfor %}<link rel="icon" type="image/png" href="/assets/img/logo-mark.png">
 <meta property="og:image" content="/assets/img/og.jpg">
 <link rel="stylesheet" href="/assets/css/fonts-msna.css">
 <link rel="stylesheet" href="/assets/css/msna.css">
 </head>
 <body>
+{%- set langSwitch -%}
+{% for l in s.langs %}{% if not loop.first %}<span class="sep">/</span>{% endif %}<a{% if l == lang %} class="current" aria-current="true"{% endif %} href="{{ (siteKey + ':' + pageKey) | msnaUrl(l) }}" hreflang="{{ l }}" lang="{{ l }}" title="{{ sites.langNames[l] }}">{{ l | upper }}</a>{% endfor %}
+{%- endset %}
 <header class="site">
   <div class="bar">
-    <a class="brand" href="{{ url('home', lang) }}">
+    <a class="brand" href="{{ (siteKey + ':home') | msnaUrl(lang) }}">
       <img src="/assets/img/logo-mark.png" alt="MSNA emblem">
       <span>
         <span class="wordmark">MSNA <b>{{ s.wordmark | safe }}</b></span>
         <span class="sub">{{ t.sub }}</span>
       </span>
     </a>
-    {% if s.navOrder.length %}<nav class="main">
-      {% for key in s.navOrder %}<a href="{{ url(key, lang) }}"{% if key == pageKey %} class="active" aria-current="page"{% endif %}>{{ t.nav[key] }}</a>
+    <nav class="main">
+      {% for key in s.navOrder %}<a href="{{ (siteKey + ':' + key) | msnaUrl(lang) }}"{% if key == pageKey %} class="active" aria-current="page"{% endif %}>{{ t.nav[key] }}</a>
       {% endfor %}
-      {% if s.langs.length > 1 %}<div class="lang-switch nav-langs">{% for l in s.langs %}{% if not loop.first %}<span class="sep">/</span>{% endif %}<a{% if l == lang %} class="current"{% endif %} href="{{ url(pageKey, l) }}" hreflang="{{ l }}">{{ l | upper }}</a>{% endfor %}</div>{% endif %}
-    </nav>{% endif %}
+      <div class="lang-switch nav-langs">{{ langSwitch | safe }}</div>
+    </nav>
     <div class="head-right">
-      {% if not s.isHub %}<a class="home-btn" href="/" title="{{ sites.homeButton[lang] }}" aria-label="{{ sites.homeButton[lang] }}">
+      {% if not s.isHub %}<a class="home-btn" href="{{ 'hub:home' | msnaUrl(lang) }}" title="{{ sites.homeButton[lang] }}" aria-label="{{ sites.homeButton[lang] }}">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 9.5V20h5v-5.5h3V20h5V9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
         <span>{{ sites.homeButton[lang] }}</span>
       </a>{% endif %}
-      {% if s.langs.length > 1 %}<div class="lang-switch">{% for l in s.langs %}{% if not loop.first %}<span class="sep">/</span>{% endif %}<a{% if l == lang %} class="current"{% endif %} href="{{ url(pageKey, l) }}" hreflang="{{ l }}">{{ l | upper }}</a>{% endfor %}</div>{% endif %}
-      <a class="btn btn-gold btn-sm hide-mobile" href="{{ url(s.ctaKey, lang) }}">{{ t.cta }}</a>
-      {% if s.navOrder.length %}<button class="menu-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>{% endif %}
+      <div class="lang-switch">{{ langSwitch | safe }}</div>
+      <a class="btn btn-gold btn-sm hide-mobile" href="{{ (siteKey + ':' + s.ctaKey) | msnaUrl(lang) }}">{{ t.cta }}</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
     </div>
   </div>
 </header>
@@ -50,7 +54,7 @@
     <div class="wrap row">
       <p>{{ t.strip }}</p>
       <span>
-        {% for link in t.stripLinks %}<a class="other-site" href="{{ link.url }}">{{ link.label }} &rarr;<span class="tag">{{ link.tag }}</span></a>&nbsp;·&nbsp; {% endfor %}<a class="other-site" href="/">{{ sites.homeButton[lang] }} &rarr;</a>
+        {% for link in s.stripLinks %}<a class="other-site" href="{{ link.site | msnaUrl(lang) }}">{{ link.label[lang] }} &rarr;<span class="tag">{{ sites.otherTag[lang] }}</span></a>&nbsp;·&nbsp; {% endfor %}<a class="other-site" href="{{ 'hub:home' | msnaUrl(lang) }}">{{ sites.homeButton[lang] }} &rarr;</a>
       </span>
     </div>
   </div>{% endif %}
@@ -66,8 +70,7 @@
         </div>
         <div>
           <h4>{{ t.navHeading }}</h4>
-          {% if s.isHub %}<ul>{% for c in companies %}<li><a href="{{ c.url }}">MSNA {{ c.name }}</a></li>{% endfor %}</ul>
-          {% else %}<ul>{% for key in s.navOrder %}<li><a href="{{ url(key, lang) }}">{{ t.nav[key] }}</a></li>{% endfor %}</ul>{% endif %}
+          <ul>{% for key in s.navOrder %}<li><a href="{{ (siteKey + ':' + key) | msnaUrl(lang) }}">{{ t.nav[key] }}</a></li>{% endfor %}</ul>
         </div>
         <div>
           <h4>Contact</h4>
@@ -79,7 +82,7 @@
         </div>
       </div>
       <div class="foot-bottom">
-        <span>{{ t.bottom }} · <a href="/privacy/">{{ t.privacy }}</a></span>
+        <span>{{ t.bottom }} · <a href="{{ 'hub:privacy' | msnaUrl(lang) }}">{{ t.privacy }}</a></span>
       </div>
     </div>
   </footer>

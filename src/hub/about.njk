@@ -1,0 +1,51 @@
+---
+pagination: { data: sites.LANGS, size: 1, alias: lang }
+pageKey: about
+permalink: "{{ 'hub:about' | msnaUrl(lang) }}"
+eleventyComputed:
+  title: "{{ hubText[lang].about.title }}"
+  description: "{{ hubText[lang].about.description }}"
+---
+{%- set h = hubText[lang].about -%}
+  <div class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">{{ h.eyebrow }}</p>
+      <h1>{{ h.h1 }}</h1>
+      <p class="lead">{{ h.lead }}</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="service-grid">
+        <div>
+          <h2>{{ h.whoH2 }}</h2>
+          <p>{{ h.whoP1 }}</p>
+          <p>{{ h.whoP2 | replace("{founder}", site.contactName) }}</p>
+        </div>
+        <div class="includes">
+          <p class="eyebrow">{{ h.whatLabel }}</p>
+          <ul>{% for it in h.what %}<li><b>{{ it[0] }}</b> – {{ it[1] }}</li>{% endfor %}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid var(--line-soft);">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">{{ h.valuesEyebrow }}</p>
+        <h2>{{ h.valuesH2 }}</h2>
+      </div>
+      <div class="grid-5">
+        {% for v in h.values %}<div class="card"><div class="num">{{ v[0] }}</div><h3>{{ v[1] }}</h3><p>{{ v[2] }}</p></div>{% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="wrap">
+      <p class="lead">{{ h.ctaLead }}</p>
+      <div class="hero-actions"><a class="btn btn-gold" href="{{ 'hub:contact' | msnaUrl(lang) }}">{{ h.ctaBtn }}</a></div>
+    </div>
+  </div>

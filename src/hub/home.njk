@@ -1,0 +1,81 @@
+---
+pagination: { data: sites.LANGS, size: 1, alias: lang }
+pageKey: home
+permalink: "{{ 'hub:home' | msnaUrl(lang) }}"
+eleventyComputed:
+  title: "{{ hubText[lang].home.title }}"
+  description: "{{ hubText[lang].home.description }}"
+---
+{%- set h = hubText[lang].home -%}
+  <section class="hero hub-hero">
+    <div class="wrap hub-hero-grid">
+      <div>
+        <p class="eyebrow">{{ h.eyebrow }}</p>
+        <h1>{{ h.h1 }}</h1>
+        <p class="lead">{{ h.lead }}</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#bedrijven">{{ h.btn1 }}</a>
+          <a class="btn btn-outline" href="{{ 'hub:partners' | msnaUrl(lang) }}">{{ h.btn2 }}</a>
+        </div>
+      </div>
+      <img class="hub-banner" src="/assets/img/msna-hero.webp" width="1600" height="914" alt="{{ h.bannerAlt }}">
+    </div>
+  </section>
+
+  <section id="bedrijven">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">{{ h.companiesEyebrow }}</p>
+        <h2>{{ h.companiesH2 }}</h2>
+      </div>
+      <div class="grid-5 hub-grid">
+        {% for c in companies %}<a class="card hub-card" href="{{ c.key | msnaUrl(lang) }}">
+          <div class="num">0{{ loop.index }}</div>
+          <h3>MSNA {{ c.name }}{% if c.status == "soon" %}<span class="tag-soon">{{ hubText[lang].soon }}</span>{% endif %}</h3>
+          <p class="tagline">{{ c.tagline[lang] }}</p>
+          <p>{{ c.text[lang] }}</p>
+          <span class="card-link">{{ h.open if c.status == "live" else h.more }} &rarr;</span>
+        </a>{% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid var(--line-soft);">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">{{ h.approachEyebrow }}</p>
+        <h2>{{ h.approachH2 }}</h2>
+      </div>
+      <div class="steps">
+        {% for st in h.steps %}<div class="step"><div class="n">0{{ loop.index }}</div><div><h3>{{ st[0] }}</h3><p>{{ st[1] }}</p></div></div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid var(--line-soft);">
+    <div class="wrap">
+      <div class="service-grid">
+        <div>
+          <p class="eyebrow">{{ h.partnersEyebrow }}</p>
+          <h2>{{ h.partnersH2 }}</h2>
+          <p>{{ h.partnersP }}</p>
+          <div class="hero-actions"><a class="btn btn-gold" href="{{ 'hub:partners' | msnaUrl(lang) }}">{{ h.partnersBtn }}</a></div>
+        </div>
+        <div class="includes">
+          <p class="eyebrow">{{ h.forWho }}</p>
+          <ul>{% for it in h.forWhoItems %}<li><b>{{ it[0] }}</b> {{ it[1] }}</li>{% endfor %}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="wrap">
+      <p class="lead">{{ h.ctaLead }}</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="{{ 'hub:contact' | msnaUrl(lang) }}">{{ h.ctaBtn }}</a>
+        <a class="btn btn-outline" href="{{ site.phone | telHref }}">{{ site.phone }}</a>
+      </div>
+    </div>
+  </div>

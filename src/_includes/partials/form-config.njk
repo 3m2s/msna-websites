@@ -1,0 +1,13 @@
+{%- set ft = hubText[lang].form -%}
+<script>
+  window.MSNA_FORM_CONFIG = {
+    endpoint: '{{ site.formEndpoint }}',
+    submitting: {{ ft.submitting | dump | safe }},
+    success: "",
+    errRequired: {{ ft.errRequired | dump | safe }},
+    errInvalidEmail: {{ ft.errInvalidEmail | dump | safe }},
+    errNoEndpoint: {{ ft.errNoEndpoint | dump | safe }},
+    errFailed: {{ ft.errFailed | dump | safe }},
+    errNetwork: {{ ft.errNetwork | dump | safe }}
+  };
+</script>

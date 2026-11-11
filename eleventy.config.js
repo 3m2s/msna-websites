@@ -1,4 +1,17 @@
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
+import sites from "./src/_data/sites.js";
+
+// "site:pagina" + taal -> URL, bv. msnaUrl("cleaning:contact", "en") -> /cleaning/en/contact/
+export function msnaUrl(ref, lang) {
+  const [siteKey, pageKey = "home"] = String(ref).split(":");
+  const s = sites[siteKey];
+  if (!s) throw new Error("msnaUrl: onbekende site " + siteKey);
+  const l = s.langs.includes(lang) ? lang : s.langs[0];
+  const slug = s.slugs[pageKey]?.[l];
+  if (slug === undefined) throw new Error("msnaUrl: onbekende pagina " + ref + " (" + l + ")");
+  if (slug.startsWith("/")) return slug;
+  return s.base + (s.rootLang === l ? "" : l + "/") + slug;
+}
 
 export default function (eleventyConfig) {
   // Zorgt dat alle links "/..." correct werken onder het GitHub Pages-pad (/<repo>/)
@@ -22,6 +35,7 @@ export default function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy({ [`node_modules/${file}`]: `assets/fonts/${name}.woff2` });
   }
 
+  eleventyConfig.addFilter("msnaUrl", msnaUrl);
   eleventyConfig.addFilter("telHref", (s) => "tel:" + String(s).replace(/[^+\d]/g, ""));
 
   return {

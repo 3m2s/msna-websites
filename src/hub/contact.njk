@@ -1,0 +1,59 @@
+---
+pagination: { data: sites.LANGS, size: 1, alias: lang }
+pageKey: contact
+permalink: "{{ 'hub:contact' | msnaUrl(lang) }}"
+eleventyComputed:
+  title: "{{ hubText[lang].contact.title }}"
+  description: "{{ hubText[lang].contact.description }}"
+---
+{%- set h = hubText[lang].contact -%}
+{%- set opt = hubText[lang].optional -%}
+  <div class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">{{ h.eyebrow }}</p>
+      <h1>{{ h.h1 }}</h1>
+      <p class="lead">{{ h.lead }}</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="form-wrap">
+        <div id="quote-form-panel">
+          <form class="quote" id="quote-form">
+            <input type="hidden" name="_subject" value="Contactaanvraag via MSNA Group Services ({{ lang | upper }})">
+            <input type="hidden" name="website" value="Group Services – contact ({{ lang }})">
+            <div class="form-row">
+              <div class="field"><label>{{ h.name }}</label><input type="text" name="name" required autocomplete="name"></div>
+              <div class="field"><label>{{ h.company }} <span class="opt">{{ opt }}</span></label><input type="text" name="company" autocomplete="organization"></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>{{ h.email }}</label><input type="email" name="email" required autocomplete="email"></div>
+              <div class="field"><label>{{ h.phone }} <span class="opt">{{ opt }}</span></label><input type="tel" name="phone" autocomplete="tel"></div>
+            </div>
+            <div class="field"><label>{{ h.about }}</label><select name="subject">{% for o in h.aboutOptions %}<option>{{ o }}</option>{% endfor %}</select></div>
+            <div class="field"><label>{{ h.message }}</label><textarea name="message" required></textarea></div>
+            <div class="radio-group"><label><input type="checkbox" name="privacy" value="ok" required> <span>{{ hubText[lang].consent | replace("{privacy}", "hub:privacy" | msnaUrl(lang)) | safe }}</span></label></div>
+            <div id="quote-form-msg" class="form-msg"></div>
+            <button type="submit" class="btn btn-gold">{{ h.submit }}</button>
+          </form>
+        </div>
+        <div id="quote-form-success" class="form-success-panel" style="display:none;">
+          <h3>{{ h.successH }}</h3>
+          <p>{{ h.successP }}</p>
+        </div>
+
+        <div class="side-info">
+          <p class="eyebrow">{{ h.direct }}</p>
+          <a class="contact-line" href="{{ site.phone | telHref }}"><span class="ico">&#9742;</span>{{ site.phone }}</a>
+          {% if site.email %}<a class="contact-line" href="mailto:{{ site.email }}"><span class="ico">&#9993;</span>{{ site.email }}</a>{% endif %}
+          <div class="contact-line"><span class="ico">&#9679;</span>{{ site.contactName }}</div>
+          <p class="eyebrow" style="margin-top:1.8rem;">{{ h.toCompany }}</p>
+          <a class="contact-line" href="{{ 'cleaning:contact' | msnaUrl(lang) }}"><span class="ico">&rarr;</span>{{ h.links.cleaning }}</a>
+          <a class="contact-line" href="{{ 'mode' | msnaUrl(lang) }}"><span class="ico">&rarr;</span>{{ h.links.mode }}</a>
+          <a class="contact-line" href="{{ 'estate' | msnaUrl(lang) }}"><span class="ico">&rarr;</span>{{ h.links.estate }}</a>
+          <p class="note">{{ h.note }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+{% include "partials/form-config.njk" %}

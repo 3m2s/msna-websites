@@ -1,0 +1,42 @@
+---
+pagination: { data: sites.LANGS, size: 1, alias: lang }
+pageKey: home
+permalink: "{{ 'estate:home' | msnaUrl(lang) }}"
+eleventyComputed:
+  title: "{{ estateText[lang].title }}"
+  description: "{{ estateText[lang].description }}"
+---
+{%- set e = estateText[lang] -%}
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">{{ e.eyebrow }}</p>
+      <h1>{{ e.h1 }}</h1>
+      <p class="lead">{{ e.lead }}</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="{{ 'hub:partners' | msnaUrl(lang) }}">{{ e.btn1 }}</a>
+        <a class="btn btn-outline" href="{{ 'hub:contact' | msnaUrl(lang) }}">{{ e.btn2 }}</a>
+      </div>
+      <div class="hero-meta">{% for m in e.meta %}<div><b>{{ m[0] }}</b>{{ m[1] }}</div>{% endfor %}</div>
+    </div>
+  </section>
+
+  <section id="aanpak">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">{{ e.approachEyebrow }}</p>
+        <h2>{{ e.approachH2 }}</h2>
+      </div>
+      <div class="steps">
+        {% for st in e.steps %}<div class="step"><div class="n">0{{ loop.index }}</div><div><h3>{{ st[0] }}</h3><p>{{ st[1] }}</p></div></div>
+        {% endfor %}
+      </div>
+      <div class="callout"><p>{{ e.callout }}</p></div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="wrap">
+      <p class="lead">{{ e.ctaLead }}</p>
+      <div class="hero-actions"><a class="btn btn-gold" href="{{ 'hub:partners' | msnaUrl(lang) }}">{{ e.ctaBtn }}</a></div>
+    </div>
+  </div>

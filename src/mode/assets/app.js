@@ -58,3 +58,13 @@
     });
   });
 })();
+
+// Taal onthouden over alle MSNA-sites heen (zelfde sleutel als de andere sites)
+(function () {
+  function remember(l) { try { if (/^(nl|en|fr)$/.test(l)) localStorage.setItem("msna-lang", l); } catch (e) {} }
+  remember(document.documentElement.lang);
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest(".lang-switch a");
+    if (a) remember((a.textContent || "").trim().toLowerCase());
+  });
+})();

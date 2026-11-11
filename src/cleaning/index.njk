@@ -30,7 +30,7 @@ permalink: /cleaning/
 </head>
 <body>
   <div class="card">
-    <img src="assets/logo-mark.png" alt="MSNA emblem">
+    <img src="/assets/img/logo-mark.png" alt="MSNA emblem">
     <h1>MSNA <b>CLEANING &amp; SUPPORT</b></h1>
     <div class="langs"><a href="en/">English</a><a href="nl/">Nederlands</a><a href="fr/">Français</a></div>
     <p class="note" id="note">Redirecting…</p>
@@ -38,7 +38,8 @@ permalink: /cleaning/
   <script>
     (function(){
       try{
-        var l = (navigator.language || 'en').toLowerCase();
+        var saved = null; try { saved = localStorage.getItem('msna-lang'); } catch(e) {}
+        var l = (saved || navigator.language || 'en').toLowerCase();
         var target = 'en/';
         if (l.indexOf('nl') === 0) target = 'nl/';
         else if (l.indexOf('fr') === 0) target = 'fr/';

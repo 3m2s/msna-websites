@@ -1,5 +1,4 @@
 {
   "layout": "layouts/msna-site.njk",
-  "siteKey": "estate",
-  "lang": "nl"
+  "siteKey": "estate"
 }

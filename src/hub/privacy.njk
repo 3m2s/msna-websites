@@ -1,0 +1,31 @@
+---
+pagination: { data: sites.LANGS, size: 1, alias: lang }
+pageKey: privacy
+permalink: "{{ 'hub:privacy' | msnaUrl(lang) }}"
+eleventyComputed:
+  title: "{{ hubText[lang].privacy.title }}"
+  description: "{{ hubText[lang].privacy.description }}"
+---
+{%- set h = hubText[lang].privacy -%}
+<div class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">{{ h.eyebrow }}</p>
+    <h1>{{ h.h1 }}</h1>
+    <p class="lead">{{ h.lead }}</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap prose" style="max-width:780px;">
+    <div class="callout" style="margin-top:0;"><p>{{ h.draft | safe }}</p></div>
+
+    <h2>{{ h.whoH }}</h2>
+    <p>{{ site.groupName }}{% if site.companyNumber %}, {{ h.companyNumberWord }} {{ site.companyNumber }}{% endif %}{% if site.address %}, {{ site.address }}{% endif %}. {{ h.contactWord }}: {{ site.contactName }}, <a href="{{ site.phone | telHref }}">{{ site.phone }}</a>{% if site.email %}, <a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}.</p>
+
+    {% for sec in h.sections %}<h2>{{ sec[0] }}</h2>
+    {{ sec[1] | safe }}
+    {% endfor %}
+    <h2 id="cookies">{{ h.cookiesH }}</h2>
+    {{ h.cookies | safe }}
+  </div>
+</section>

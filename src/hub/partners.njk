@@ -1,0 +1,55 @@
+---
+pagination: { data: sites.LANGS, size: 1, alias: lang }
+pageKey: partners
+permalink: "{{ 'hub:partners' | msnaUrl(lang) }}"
+eleventyComputed:
+  title: "{{ hubText[lang].partners.title }}"
+  description: "{{ hubText[lang].partners.description }}"
+---
+{%- set h = hubText[lang].partners -%}
+{%- set opt = hubText[lang].optional -%}
+  <div class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">{{ h.eyebrow }}</p>
+      <h1>{{ h.h1 }}</h1>
+      <p class="lead">{{ h.lead }}</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="form-wrap">
+        <div id="quote-form-panel">
+          <form class="quote" id="quote-form">
+            <input type="hidden" name="_subject" value="Samenwerkingsvoorstel via MSNA Group Services ({{ lang | upper }})">
+            <input type="hidden" name="website" value="Group Services – samenwerken ({{ lang }})">
+            <div class="field"><label>{{ h.type }}</label><select name="type" required>{% for o in h.types %}<option>{{ o }}</option>{% endfor %}</select></div>
+            <div class="form-row">
+              <div class="field"><label>{{ h.company }}</label><input type="text" name="company" required autocomplete="organization"></div>
+              <div class="field"><label>{{ h.contactPerson }}</label><input type="text" name="contact_person" required autocomplete="name"></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>{{ h.email }}</label><input type="email" name="email" required autocomplete="email"></div>
+              <div class="field"><label>{{ h.phone }} <span class="opt">{{ opt }}</span></label><input type="tel" name="phone" autocomplete="tel"></div>
+            </div>
+            <div class="field"><label>{{ h.proposal }}</label><textarea name="proposal" required placeholder="{{ h.proposalPh }}"></textarea></div>
+            <div class="radio-group"><label><input type="checkbox" name="privacy" value="ok" required> <span>{{ hubText[lang].consent | replace("{privacy}", "hub:privacy" | msnaUrl(lang)) | safe }}</span></label></div>
+            <p style="font-size:.78rem;color:var(--ink-faint);">{{ h.attachNote }}</p>
+            <div id="quote-form-msg" class="form-msg"></div>
+            <button type="submit" class="btn btn-gold">{{ h.submit }}</button>
+          </form>
+        </div>
+        <div id="quote-form-success" class="form-success-panel" style="display:none;">
+          <h3>{{ h.successH }}</h3>
+          <p>{{ h.successP }}</p>
+        </div>
+
+        <div class="side-info">
+          <p class="eyebrow">{{ h.sideTitle }}</p>
+          <div class="steps" style="margin-top:0;">
+            {% for st in h.steps %}<div class="step"><div class="n">0{{ loop.index }}</div><div><h3>{{ st[0] }}</h3><p>{{ st[1] }}</p></div></div>{% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% include "partials/form-config.njk" %}

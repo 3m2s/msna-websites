@@ -1,41 +1,51 @@
 ---
-pageKey: home
-title: "MSNA Estate – vastgoed, projecten en toekomstgerichte ontwikkeling"
-description: "MSNA Estate: de vastgoedactiviteiten en projecten van MSNA Group Services. De website is in voorbereiding."
+layout: false
+permalink: /estate/
 ---
-  <section class="hero">
-    <div class="wrap">
-      <p class="eyebrow">MSNA Estate · Binnenkort online</p>
-      <h1>Vastgoed, projecten en toekomstgerichte ontwikkeling</h1>
-      <p class="lead">De website van MSNA Estate wordt voorbereid. Projecten en vastgoedaanbod worden pas gepubliceerd wanneer ze bevestigd en publiceerbaar zijn.</p>
-      <div class="hero-actions">
-        <a class="btn btn-gold" href="/group/samenwerken/">Zakelijk samenwerken</a>
-        <a class="btn btn-outline" href="/group/contact/">Neem contact op</a>
-      </div>
-      <div class="hero-meta"><div><b>Projecten</b>Enkel bevestigde en publiceerbare projecten, met status per project.</div><div><b>Samenwerking</b>Voor eigenaars, projectontwikkelaars en zakelijke partners.</div><div><b>Onder voorbehoud</b>Planning en kenmerken worden altijd als voorlopig vermeld.</div></div>
-    </div>
-  </section>
-
-  <section id="aanpak">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Onze aanpak</p>
-        <h2>Zorgvuldig van idee tot oplevering</h2>
-      </div>
-      <div class="steps">
-        <div class="step"><div class="n">01</div><div><h3>Onderzoek</h3><p>Locatie, mogelijkheden en randvoorwaarden in kaart brengen.</p></div></div>
-        <div class="step"><div class="n">02</div><div><h3>Voorbereiding</h3><p>Plannen, vergunningen en partners afstemmen.</p></div></div>
-        <div class="step"><div class="n">03</div><div><h3>Financiering</h3><p>Een haalbaar en verantwoord kader uitwerken.</p></div></div>
-        <div class="step"><div class="n">04</div><div><h3>Uitvoering</h3><p>Realisatie met duidelijke afspraken.</p></div></div>
-        <div class="step"><div class="n">05</div><div><h3>Opvolging</h3><p>Beheer en opvolging na oplevering.</p></div></div>
-      </div>
-      <div class="callout"><p>Deze pagina bevat geen investeringsaanbod. Informatie over projecten wordt gedeeld onder voorbehoud en na bevestiging.</p></div>
-    </div>
-  </section>
-
-  <div class="cta-band">
-    <div class="wrap">
-      <p class="lead">Een project of samenwerkingsvoorstel? Vertel ons over het projecttype, de locatie en de omvang.</p>
-      <div class="hero-actions"><a class="btn btn-gold" href="/group/samenwerken/">Dien een projectvoorstel in</a></div>
-    </div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MSNA Estate</title>
+<style>
+  :root{ --bg:#0a0908; --ink:#f3efe6; --gold:#c9a227; --gold-bright:#e9c75b; --ink-dim:#b7ae9e; color-scheme:dark; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;}
+  body{
+    background: radial-gradient(ellipse 900px 600px at 50% 30%, rgba(201,162,39,.09), transparent 60%), var(--bg);
+    color:var(--ink); font-family:'Segoe UI', Helvetica, Arial, sans-serif;
+    display:flex; align-items:center; justify-content:center; min-height:100%;
+    padding:24px;
+  }
+  .card{ text-align:center; display:flex; flex-direction:column; align-items:center; gap:1.6rem; max-width:360px; }
+  .card img{ width:56px; height:56px; object-fit:contain; }
+  .card h1{ font-size:1rem; letter-spacing:.24em; margin:0; font-weight:500; }
+  .card h1 b{ color:var(--gold-bright); font-weight:500; }
+  .langs{ display:flex; gap:.75rem; }
+  .langs a{ text-decoration:none; color:var(--ink); border:1px solid rgba(201,162,39,.3); padding:.7em 1.3em; border-radius:2px; font-size:.75rem; letter-spacing:.14em; transition: border-color .2s ease, color .2s ease; }
+  .langs a:hover{ border-color: var(--gold); color: var(--gold-bright); }
+  .note{ color: var(--ink-dim); font-size:.72rem; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img src="/assets/img/logo-mark.png" alt="MSNA emblem">
+    <h1>MSNA <b>ESTATE</b></h1>
+    <div class="langs"><a href="en/">English</a><a href="nl/">Nederlands</a><a href="fr/">Français</a></div>
+    <p class="note" id="note">Redirecting…</p>
   </div>
+  <script>
+    (function(){
+      try{
+        var saved = null; try { saved = localStorage.getItem('msna-lang'); } catch(e) {}
+        var l = (saved || navigator.language || 'en').toLowerCase();
+        var target = 'en/';
+        if (l.indexOf('nl') === 0) target = 'nl/';
+        else if (l.indexOf('fr') === 0) target = 'fr/';
+        window.location.replace(target);
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>

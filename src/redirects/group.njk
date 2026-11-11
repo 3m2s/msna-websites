@@ -1,0 +1,39 @@
+---
+# Oude adressen van de losse Group Services-site -> nieuwe adressen op de startpagina
+pagination:
+  data: oldGroupUrls
+  size: 1
+  alias: r
+oldGroupUrls:
+  - { from: "/group/", to: "hub:home" }
+  - { from: "/group/over/", to: "hub:about" }
+  - { from: "/group/activiteiten/", to: "hub:companies" }
+  - { from: "/group/samenwerken/", to: "hub:partners" }
+  - { from: "/group/contact/", to: "hub:contact" }
+layout: false
+permalink: "{{ r.from }}"
+eleventyExcludeFromCollections: true
+---
+{%- set target = r.to | msnaUrl("nl") -%}
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>MSNA Group Services</title>
+<link rel="canonical" href="{{ target }}">
+<script>
+  // Taal onthouden: Engels/Frans -> zelfde pagina in die taal
+  (function(){
+    var map = { en: {{ (r.to | msnaUrl("en")) | dump | safe }}, fr: {{ (r.to | msnaUrl("fr")) | dump | safe }} };
+    var l = null; try { l = localStorage.getItem("msna-lang"); } catch(e) {}
+    var a = document.querySelector('link[rel=canonical]');
+    var base = a.getAttribute('href').slice(0, a.getAttribute('href').length - {{ target | length }});
+    location.replace(map[l] ? base + map[l] : a.href);
+  })();
+</script>
+</head>
+<body style="background:#0a0908;color:#f3efe6;font-family:sans-serif;padding:2rem">
+<p>Deze pagina is verhuisd: <a href="{{ target }}" style="color:#e9c75b">ga verder</a>.</p>
+</body>
+</html>

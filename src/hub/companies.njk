@@ -1,0 +1,37 @@
+---
+pagination: { data: sites.LANGS, size: 1, alias: lang }
+pageKey: companies
+permalink: "{{ 'hub:companies' | msnaUrl(lang) }}"
+eleventyComputed:
+  title: "{{ hubText[lang].companies.title }}"
+  description: "{{ hubText[lang].companies.description }}"
+---
+{%- set h = hubText[lang].companies -%}
+  <div class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">{{ h.eyebrow }}</p>
+      <h1>{{ h.h1 }}</h1>
+      <p class="lead">{{ h.lead }}</p>
+    </div>
+  </div>
+
+  {% for c in companies %}{%- set b = h.blocks[c.key] -%}
+  <div class="service-block">
+    <div class="wrap service-grid">
+      <div>
+        <p class="eyebrow">0{{ loop.index }} · MSNA {{ c.name }}</p>
+        <h2>{{ b.h2 }}</h2>
+        <p>{{ b.p }}</p>
+        <div class="hero-actions">
+          <a class="btn {{ 'btn-gold' if c.status == 'live' else 'btn-outline' }}" href="{{ c.key | msnaUrl(lang) }}">{{ b.btn1 }}</a>
+          {% if c.key == "cleaning" %}<a class="btn btn-outline" href="{{ 'cleaning:contact' | msnaUrl(lang) }}">{{ b.btn2 }}</a>{% endif %}
+          {% if c.key == "mode" %}<a class="btn btn-outline" href="{{ 'mode' | msnaUrl(lang) }}#waitlist">{{ b.btn2 }}</a>{% endif %}
+        </div>
+      </div>
+      <div class="includes">
+        <p class="eyebrow">{{ b.label }}</p>
+        <ul>{% for it in b.items %}<li>{{ it }}</li>{% endfor %}</ul>
+      </div>
+    </div>
+  </div>
+  {% endfor %}

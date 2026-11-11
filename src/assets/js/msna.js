@@ -90,3 +90,14 @@
       });
   });
 })();
+
+// Taal onthouden over alle MSNA-sites heen: de taal van de huidige pagina,
+// en bij een klik op een taalknop meteen de gekozen taal.
+(function(){
+  function remember(l){ try { if (/^(nl|en|fr)$/.test(l)) localStorage.setItem('msna-lang', l); } catch(e){} }
+  remember(document.documentElement.lang);
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('.lang-switch a[hreflang]');
+    if (a) remember(a.getAttribute('hreflang'));
+  });
+})();

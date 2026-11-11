@@ -42,7 +42,8 @@ permalink: /mode/
   <script>
     (function(){
       try{
-        var l = (navigator.language || 'en').toLowerCase();
+        var saved = null; try { saved = localStorage.getItem('msna-lang'); } catch(e) {}
+        var l = (saved || navigator.language || 'en').toLowerCase();
         var target = 'en/';
         if (l.indexOf('nl') === 0) target = 'nl/';
         else if (l.indexOf('fr') === 0) target = 'fr/';
