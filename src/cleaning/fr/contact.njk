@@ -1,0 +1,86 @@
+---
+layout: layouts/cleaning-site.njk
+lang: fr
+pageKey: contact
+title: "Demander un devis de nettoyage professionnel | MSNA"
+description: "Demandez un devis sur mesure pour le nettoyage de votre bureau, showroom ou local professionnel."
+permalink: "/cleaning/fr/contact/"
+---
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h1>Demander un devis</h1>
+      <p class="lead">Parlez-nous de votre site et des travaux que vous envisagez. Après avoir discuté de l'espace, de sa taille et des tâches souhaitées, nous établissons un devis sur mesure.</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="form-wrap">
+        <div id="quote-form-panel">
+          <form class="quote" id="quote-form">
+            <div class="form-row">
+              <div class="field"><label>Nom de l'entreprise</label><input type="text" name="company" required></div>
+              <div class="field"><label>Personne de contact</label><input type="text" name="contact_person" required></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>Adresse e-mail</label><input type="email" name="email" required></div>
+              <div class="field"><label>Téléphone</label><input type="tel" name="phone" required></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>Code postal</label><input type="text" name="postcode" required></div>
+              <div class="field"><label>Localité</label><input type="text" name="location" required></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>Type de service</label><select name="service" required><option>Bureaux et salles de réunion</option><option>Accueils et showrooms</option><option>Sanitaires</option><option>Garages et ateliers</option><option>Nettoyage vapeur et en profondeur</option><option>Entretien périodique</option><option>Autre</option></select></div>
+              <div class="field"><label>Ponctuel ou périodique</label><div class="radio-group"><label><input type="radio" name="frequency" value="Ponctuel" checked> Ponctuel</label><label><input type="radio" name="frequency" value="Périodique"> Périodique</label></div></div>
+            </div>
+            <div class="field"><label>Brève description de la mission</label><textarea name="description" required></textarea></div>
+            <hr class="sep">
+            <div class="form-row">
+              <div class="field"><label>Numéro d'entreprise <span class="opt">(facultatif)</span></label><input type="text" name="vat"></div>
+              <div class="field"><label>Superficie (m²) <span class="opt">(facultatif)</span></label><input type="number" name="area" min="0"></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>Créneau horaire souhaité <span class="opt">(facultatif)</span></label><input type="text" name="window"></div>
+              <div class="field"><label>Date souhaitée pour la visite <span class="opt">(facultatif)</span></label><input type="date" name="visit_date"></div>
+            </div>
+            <div class="field"><label>Informations particulières de sécurité ou d'accès <span class="opt">(facultatif)</span></label><textarea name="safety"></textarea></div>
+            <p style="font-size:.78rem;color:var(--ink-faint);">Vous pouvez nous envoyer des photos de l'espace ou des salissures après ce formulaire à <a href="mailto:info@msna-cleaning.be" style="color:var(--gold);">info@msna-cleaning.be</a>.</p>
+            <div id="quote-form-msg" class="form-msg"></div>
+            <button type="submit" class="btn btn-gold">Envoyer la demande</button>
+          </form>
+        </div>
+        <div id="quote-form-success" class="form-success-panel" style="display:none;">
+          <h3>Demande reçue</h3>
+          <p>Merci. Nous vous contacterons pour discuter de l'espace et des travaux souhaités.</p>
+        </div>
+
+        <div class="side-info">
+          <p class="eyebrow">Nous contacter directement</p>
+          <a class="contact-line" href="tel:+32479014393"><span class="ico">&#9742;</span>+32 479 01 43 93</a>
+          <a class="contact-line" href="mailto:info@msna-cleaning.be"><span class="ico">&#9993;</span>info@msna-cleaning.be</a>
+          <div class="contact-line"><span class="ico">&#9679;</span>Shauki Ridouani</div>
+          <p class="note">Les coordonnées légales et l'adresse du siège seront ajoutées au lancement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="border-top:1px solid var(--line-soft);">
+    <div class="wrap" style="max-width:780px;">
+      <div class="section-head"><h2>Questions fréquentes</h2></div>
+      <div class="faq-item"><h3>Pouvons-nous demander un entretien hebdomadaire ?</h3><p>Oui. Le rythme d’entretien souhaité et les tâches sont convenus avec vous au préalable.</p></div><div class="faq-item"><h3>MSNA peut-il aussi intervenir ponctuellement ?</h3><p>Oui. Les missions ponctuelles et le nettoyage intensif sont évalués sur demande.</p></div><div class="faq-item"><h3>Tous les sols peuvent-ils être nettoyés à la vapeur ?</h3><p>Non. Le matériau, le revêtement et la résistance à la température et à l'humidité sont d'abord vérifiés.</p></div><div class="faq-item"><h3>Comment obtenir un prix ?</h3><p>Après discussion de l'espace, de sa taille et des tâches souhaitées, nous établissons un devis sur mesure.</p></div>
+    </div>
+  </section>
+<script>
+  window.MSNA_FORM_CONFIG = {
+    endpoint: '{{ site.formEndpoint }}',
+    submitting: "Envoi\u2026",
+    success: "Demande re\u00e7ue",
+    errRequired: "Veuillez remplir les champs obligatoires.",
+    errInvalidEmail: "Veuillez saisir une adresse e-mail valide.",
+    errNoEndpoint: "Ce formulaire n'est pas encore reli\u00e9 \u00e0 une adresse de traitement. Contactez-nous directement par t\u00e9l\u00e9phone ou e-mail entre-temps.",
+    errFailed: "Une erreur est survenue lors de l'envoi. R\u00e9essayez ou contactez-nous directement.",
+    errNetwork: "Erreur r\u00e9seau. R\u00e9essayez ou contactez-nous directement."
+  };
+</script>

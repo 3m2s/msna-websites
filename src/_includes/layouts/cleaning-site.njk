@@ -1,0 +1,78 @@
+{%- set cs = cleaningSite -%}
+{%- set t = cs.t[lang] -%}
+{%- macro url(key, l) -%}/cleaning/{{ l }}/{{ cs.slugs[key][l] }}{%- endmacro -%}
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ title }}</title>
+{% if description %}<meta name="description" content="{{ description }}">{% endif %}
+{% for l in cs.langs %}<link rel="alternate" hreflang="{{ l }}" href="{{ url(pageKey, l) }}">
+{% endfor %}<link rel="icon" type="image/png" href="/cleaning/assets/logo-mark.png">
+<link rel="stylesheet" href="/assets/css/fonts-msna.css">
+<link rel="stylesheet" href="/cleaning/assets/style.css">
+</head>
+<body>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="{{ url('home', lang) }}">
+      <img src="/cleaning/assets/logo-mark.png" alt="MSNA emblem">
+      <span>
+        <span class="wordmark">MSNA <b>CLEANING &amp; SUPPORT</b></span>
+        <span class="sub">{{ t.sub }}</span>
+      </span>
+    </a>
+    <nav class="main">
+      {% for key in cs.navOrder %}<a href="{{ url(key, lang) }}"{% if key == pageKey %} class="active" aria-current="page"{% endif %}>{{ t.nav[key] }}</a>
+      {% endfor %}
+    </nav>
+    <div class="head-right">
+      <div class="lang-switch">{% for l in cs.langs %}{% if not loop.first %}<span class="sep">/</span>{% endif %}<a{% if l == lang %} class="current"{% endif %} href="{{ url(pageKey, l) }}" hreflang="{{ l }}">{{ l | upper }}</a>{% endfor %}</div>
+      <a class="btn btn-gold btn-sm hide-mobile" href="{{ url('contact', lang) }}">{{ t.cta }}</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</header>
+{{ content | safe }}
+  <div class="group-strip">
+    <div class="wrap row">
+      <p>{{ t.strip }}</p>
+      <span>
+        <a class="other-site" href="/mode/{{ lang }}/">{{ t.modeLink }} &rarr;<span class="tag">{{ t.otherTag }}</span></a>
+        &nbsp;·&nbsp; <a class="other-site" href="/">{{ t.groupLink }} &rarr;</a>
+      </span>
+    </div>
+  </div>
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-brand">
+            <img src="/cleaning/assets/logo-mark.png" alt="MSNA emblem">
+            <span class="wordmark">MSNA <b>CLEANING &amp; SUPPORT</b></span>
+          </div>
+          <p>{{ t.blurb }}</p>
+        </div>
+        <div>
+          <h4>{{ t.navHeading }}</h4>
+          <ul>{% for key in cs.navOrder %}<li><a href="{{ url(key, lang) }}">{{ t.nav[key] }}</a></li>{% endfor %}</ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="{{ site.phone | telHref }}">{{ site.phone }}</a></li>
+            <li><a href="mailto:{{ cs.email }}">{{ cs.email }}</a></li>
+            <li>{{ site.contactName }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>{{ t.bottom }} · <a href="/privacy/">{{ t.privacy }}</a></span>
+      </div>
+    </div>
+  </footer>
+  <script>window.MSNA_FORM_CONFIG = window.MSNA_FORM_CONFIG || null;</script>
+  <script src="/cleaning/assets/app.js"></script>
+</body>
+</html>

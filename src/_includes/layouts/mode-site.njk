@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ title }}</title>
+{% for l in ["en", "nl", "fr"] %}<link rel="alternate" hreflang="{{ l }}" href="/mode/{{ l }}/">
+{% endfor %}<link rel="icon" type="image/png" href="/mode/assets/logo-mark.png">
+<link rel="stylesheet" href="/assets/css/fonts-msna.css">
+<link rel="stylesheet" href="/mode/assets/style.css">
+</head>
+<body>
+{{ content | safe }}
+<script src="/mode/assets/app.js"></script>
+</body>
+</html>

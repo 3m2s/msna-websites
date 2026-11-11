@@ -22,9 +22,9 @@ export default [
     key: "mode",
     name: "MODE",
     url: "/mode/",
-    status: "soon",
-    tagline: "Stijl met mentaliteit en ambitie.",
-    text: "Premium modemerk rond de filosofie Mentaliteit, Status, Niveau, Ambitie. Collecties voor heren, dames en lifestyle. De webshop is in voorbereiding.",
+    status: "live",
+    tagline: "Mentaliteit. Status. Niveau. Ambitie.",
+    text: "Ultra-exclusief modelabel van MSNA Group Services. Collectie 01 komt er binnenkort aan – schrijf je in voor vroege toegang.",
     button: "Ontdek collecties",
   },
   {

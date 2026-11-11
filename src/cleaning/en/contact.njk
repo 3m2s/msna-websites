@@ -1,0 +1,86 @@
+---
+layout: layouts/cleaning-site.njk
+lang: en
+pageKey: contact
+title: "Request a Commercial Cleaning Quote | MSNA"
+description: "Request a tailored quote for cleaning your office, showroom or business premises."
+permalink: "/cleaning/en/contact/"
+---
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h1>Request a quote</h1>
+      <p class="lead">Tell us about your location and the work you have in mind. After discussing the space, its size and the tasks you need, we'll put together a tailored quote.</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="form-wrap">
+        <div id="quote-form-panel">
+          <form class="quote" id="quote-form">
+            <div class="form-row">
+              <div class="field"><label>Company name</label><input type="text" name="company" required></div>
+              <div class="field"><label>Contact person</label><input type="text" name="contact_person" required></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>Email address</label><input type="email" name="email" required></div>
+              <div class="field"><label>Phone</label><input type="tel" name="phone" required></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>Postcode</label><input type="text" name="postcode" required></div>
+              <div class="field"><label>Location (city)</label><input type="text" name="location" required></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>Type of service</label><select name="service" required><option>Offices and meeting rooms</option><option>Reception areas and showrooms</option><option>Washrooms</option><option>Garages and workshops</option><option>Steam and deep cleaning</option><option>Periodic maintenance</option><option>Other</option></select></div>
+              <div class="field"><label>One-off or periodic</label><div class="radio-group"><label><input type="radio" name="frequency" value="One-off" checked> One-off</label><label><input type="radio" name="frequency" value="Periodic"> Periodic</label></div></div>
+            </div>
+            <div class="field"><label>Brief description of the work</label><textarea name="description" required></textarea></div>
+            <hr class="sep">
+            <div class="form-row">
+              <div class="field"><label>Company registration number <span class="opt">(optional)</span></label><input type="text" name="vat"></div>
+              <div class="field"><label>Floor area (m²) <span class="opt">(optional)</span></label><input type="number" name="area" min="0"></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>Preferred time window <span class="opt">(optional)</span></label><input type="text" name="window"></div>
+              <div class="field"><label>Preferred site visit date <span class="opt">(optional)</span></label><input type="date" name="visit_date"></div>
+            </div>
+            <div class="field"><label>Special safety or access information <span class="opt">(optional)</span></label><textarea name="safety"></textarea></div>
+            <p style="font-size:.78rem;color:var(--ink-faint);">Photos of the space or the build-up can be sent after this form to <a href="mailto:info@msna-cleaning.be" style="color:var(--gold);">info@msna-cleaning.be</a>.</p>
+            <div id="quote-form-msg" class="form-msg"></div>
+            <button type="submit" class="btn btn-gold">Send Request</button>
+          </form>
+        </div>
+        <div id="quote-form-success" class="form-success-panel" style="display:none;">
+          <h3>Request received</h3>
+          <p>Thank you. We'll get in touch to discuss the space and the work involved.</p>
+        </div>
+
+        <div class="side-info">
+          <p class="eyebrow">Get in touch directly</p>
+          <a class="contact-line" href="tel:+32479014393"><span class="ico">&#9742;</span>+32 479 01 43 93</a>
+          <a class="contact-line" href="mailto:info@msna-cleaning.be"><span class="ico">&#9993;</span>info@msna-cleaning.be</a>
+          <div class="contact-line"><span class="ico">&#9679;</span>Shauki Ridouani</div>
+          <p class="note">Company and registered address details will follow at launch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="border-top:1px solid var(--line-soft);">
+    <div class="wrap" style="max-width:780px;">
+      <div class="section-head"><h2>Frequently asked questions</h2></div>
+      <div class="faq-item"><h3>Can we request weekly cleaning?</h3><p>Yes. The maintenance schedule and the work involved are discussed with you beforehand.</p></div><div class="faq-item"><h3>Can MSNA also clean on a one-off basis?</h3><p>Yes. One-off contracts and intensive cleaning are assessed on request.</p></div><div class="faq-item"><h3>Can every floor be steam cleaned?</h3><p>No. Material, coating, heat and moisture resistance are checked first.</p></div><div class="faq-item"><h3>How do we get a price?</h3><p>After discussing the space, its size and the tasks needed, we put together a tailored quote.</p></div>
+    </div>
+  </section>
+<script>
+  window.MSNA_FORM_CONFIG = {
+    endpoint: '{{ site.formEndpoint }}',
+    submitting: "Sending\u2026",
+    success: "Request received",
+    errRequired: "Please fill in the required fields.",
+    errInvalidEmail: "Please enter a valid email address.",
+    errNoEndpoint: "This form isn\u2019t connected to a processing address yet. In the meantime, please contact us directly by phone or email.",
+    errFailed: "Something went wrong while sending. Please try again or contact us directly.",
+    errNetwork: "Network error. Please try again or contact us directly."
+  };
+</script>

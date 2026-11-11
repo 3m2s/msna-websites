@@ -22,30 +22,8 @@ export default {
     ],
     cta: { label: "Neem contact op", url: "/group/contact/" },
   },
-  cleaning: {
-    sub: "Cleaning & Support",
-    full: "MSNA Cleaning & Support",
-    home: "/cleaning/",
-    blurb:
-      "Professionele schoonmaak voor kantoren, recepties, showrooms, sanitaire ruimten, garages en werkplaatsen.",
-    nav: [
-      { label: "Home", url: "/cleaning/" },
-      { label: "Diensten", url: "/cleaning/diensten/", prefix: "/cleaning/diensten/", exclude: "/cleaning/diensten/stoom-dieptereiniging/" },
-      { label: "Stoom- & dieptereiniging", url: "/cleaning/diensten/stoom-dieptereiniging/" },
-      { label: "Onze aanpak", url: "/cleaning/werkwijze/" },
-      { label: "Over MSNA", url: "/cleaning/over/" },
-      { label: "Contact", url: "/cleaning/offerte/#contact" },
-    ],
-    cta: { label: "Offerte aanvragen", url: "/cleaning/offerte/" },
-    mobileBar: true,
-  },
-  mode: {
-    sub: "MODE",
-    full: "MSNA MODE",
-    home: "/mode/",
-    blurb: "Stijl met mentaliteit en ambitie. De webshop van MSNA MODE is in voorbereiding.",
-    nav: [],
-  },
+  // Cleaning & Support en MODE hebben hun eigen layout en teksten:
+  // zie src/_includes/layouts/cleaning-site.njk, mode-site.njk en src/_data/cleaningSite.js
   estate: {
     sub: "Estate",
     full: "MSNA Estate",

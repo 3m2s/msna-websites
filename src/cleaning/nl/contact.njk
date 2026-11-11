@@ -1,0 +1,86 @@
+---
+layout: layouts/cleaning-site.njk
+lang: nl
+pageKey: contact
+title: "Offerte professionele schoonmaak aanvragen | MSNA"
+description: "Vraag een offerte op maat aan voor de schoonmaak van uw kantoor, showroom of bedrijfsruimte."
+permalink: "/cleaning/nl/contact/"
+---
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h1>Vraag een offerte aan</h1>
+      <p class="lead">Vertel ons over uw locatie en de werkzaamheden die u in gedachten heeft. Na bespreking van de ruimte, de omvang en de gewenste taken stellen we een offerte op maat op.</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="form-wrap">
+        <div id="quote-form-panel">
+          <form class="quote" id="quote-form">
+            <div class="form-row">
+              <div class="field"><label>Bedrijfsnaam</label><input type="text" name="company" required></div>
+              <div class="field"><label>Contactpersoon</label><input type="text" name="contact_person" required></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>E-mailadres</label><input type="email" name="email" required></div>
+              <div class="field"><label>Telefoon</label><input type="tel" name="phone" required></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>Postcode</label><input type="text" name="postcode" required></div>
+              <div class="field"><label>Locatie (gemeente)</label><input type="text" name="location" required></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>Type dienst</label><select name="service" required><option>Kantoren en vergaderruimtes</option><option>Recepties en showrooms</option><option>Sanitaire ruimten</option><option>Garages en werkplaatsen</option><option>Stoom- en dieptereiniging</option><option>Periodiek onderhoud</option><option>Andere</option></select></div>
+              <div class="field"><label>Eenmalig of periodiek</label><div class="radio-group"><label><input type="radio" name="frequency" value="Eenmalig" checked> Eenmalig</label><label><input type="radio" name="frequency" value="Periodiek"> Periodiek</label></div></div>
+            </div>
+            <div class="field"><label>Korte omschrijving van de opdracht</label><textarea name="description" required></textarea></div>
+            <hr class="sep">
+            <div class="form-row">
+              <div class="field"><label>Ondernemingsnummer <span class="opt">(optioneel)</span></label><input type="text" name="vat"></div>
+              <div class="field"><label>Oppervlakte (m²) <span class="opt">(optioneel)</span></label><input type="number" name="area" min="0"></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>Gewenst tijdvenster <span class="opt">(optioneel)</span></label><input type="text" name="window"></div>
+              <div class="field"><label>Voorkeursdatum plaatsbezoek <span class="opt">(optioneel)</span></label><input type="date" name="visit_date"></div>
+            </div>
+            <div class="field"><label>Bijzondere veiligheids- of toegangsinfo <span class="opt">(optioneel)</span></label><textarea name="safety"></textarea></div>
+            <p style="font-size:.78rem;color:var(--ink-faint);">Foto’s van de ruimte of de vervuiling kunt u na dit formulier doorsturen naar <a href="mailto:info@msna-cleaning.be" style="color:var(--gold);">info@msna-cleaning.be</a>.</p>
+            <div id="quote-form-msg" class="form-msg"></div>
+            <button type="submit" class="btn btn-gold">Verstuur aanvraag</button>
+          </form>
+        </div>
+        <div id="quote-form-success" class="form-success-panel" style="display:none;">
+          <h3>Vraag ontvangen</h3>
+          <p>Bedankt. We nemen contact met u op om de ruimte en de werkzaamheden te bespreken.</p>
+        </div>
+
+        <div class="side-info">
+          <p class="eyebrow">Rechtstreeks contact</p>
+          <a class="contact-line" href="tel:+32479014393"><span class="ico">&#9742;</span>+32 479 01 43 93</a>
+          <a class="contact-line" href="mailto:info@msna-cleaning.be"><span class="ico">&#9993;</span>info@msna-cleaning.be</a>
+          <div class="contact-line"><span class="ico">&#9679;</span>Shauki Ridouani</div>
+          <p class="note">Zakelijke gegevens en vestigingsadres volgen bij lancering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="border-top:1px solid var(--line-soft);">
+    <div class="wrap" style="max-width:780px;">
+      <div class="section-head"><h2>Veelgestelde vragen</h2></div>
+      <div class="faq-item"><h3>Kunnen wij een wekelijkse schoonmaakopdracht aanvragen?</h3><p>Ja. Het gewenste onderhoudsritme en de werkzaamheden worden vooraf met u besproken.</p></div><div class="faq-item"><h3>Kan MSNA ook eenmalig reinigen?</h3><p>Ja. Eenmalige opdrachten en intensieve reiniging worden op aanvraag beoordeeld.</p></div><div class="faq-item"><h3>Kan elke vloer met stoom gereinigd worden?</h3><p>Nee. Materiaal, coating, temperatuur- en vochtbestendigheid worden eerst gecontroleerd.</p></div><div class="faq-item"><h3>Hoe ontvangen wij een prijs?</h3><p>Na bespreking van de ruimte, omvang en gewenste taken stellen we een offerte op maat op.</p></div>
+    </div>
+  </section>
+<script>
+  window.MSNA_FORM_CONFIG = {
+    endpoint: '{{ site.formEndpoint }}',
+    submitting: "Versturen\u2026",
+    success: "Vraag ontvangen",
+    errRequired: "Vul de verplichte velden in.",
+    errInvalidEmail: "Vul een geldig e-mailadres in.",
+    errNoEndpoint: "Het formulier is nog niet gekoppeld aan een verwerkingsadres. Neem intussen rechtstreeks contact op via telefoon of e-mail.",
+    errFailed: "Er ging iets mis bij het versturen. Probeer opnieuw of neem rechtstreeks contact op.",
+    errNetwork: "Netwerkfout. Probeer opnieuw of neem rechtstreeks contact op."
+  };
+</script>
