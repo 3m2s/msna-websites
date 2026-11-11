@@ -31,6 +31,8 @@ jobs:
         env:
           # bv. "/msna-websites/" voor een projectsite; "/" bij een eigen domein
           PATH_PREFIX: ${{ steps.pages.outputs.base_path }}/
+          # volledig adres, voor og:image (link-voorbeelden)
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

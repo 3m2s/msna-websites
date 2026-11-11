@@ -14,5 +14,8 @@ export default {
   // Zolang dit leeg is, tonen formulieren een melding met het telefoonnummer.
   formEndpoint: "",
 
+  // Volledig webadres van de site (gezet door de deploy-workflow), nodig voor og:image
+  url: (process.env.SITE_URL || "").replace(/\/$/, ""),
+
   year: new Date().getFullYear(),
 };
