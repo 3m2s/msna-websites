@@ -1,0 +1,30 @@
+---
+seoTitle: "MSNA Group Services – ondernemerschap, dienstverlening, mode en vastgoed"
+description: "MSNA Group Services brengt ondernemerschap, dienstverlening, mode en vastgoed samen onder één groep. Kies hier het juiste MSNA-bedrijf."
+---
+<section class="hub-hero">
+  <div class="wrap">
+    <img class="hub-banner" src="/assets/img/msna-hero.webp" width="1600" height="914"
+         alt="MSNA Group Services – logo in goud op zwart marmer">
+    <span class="eyebrow">Vier bedrijven · één groep</span>
+    <h1>Ondernemerschap, dienstverlening, <span class="gold-text">mode en vastgoed</span></h1>
+    <p class="lead">Kies hieronder het MSNA-bedrijf waarvoor u komt. Elke activiteit heeft een eigen website met haar diensten, werkwijze en contactmogelijkheden.</p>
+  </div>
+</section>
+
+<section class="hub-grid">
+  <div class="wrap grid grid-4">
+    {% for c in companies %}
+    <a class="card card-dark company-card{% if c.status == 'soon' %} is-soon{% endif %}" href="{{ c.url }}">
+      <div class="kicker">MSNA</div>
+      <h2>{{ c.name }}</h2>
+      <p class="tagline">{{ c.tagline }}</p>
+      <p>{{ c.text }}</p>
+      <div class="card-foot">
+        <span class="more">{{ "Website openen" if c.status == "live" else "Binnenkort" }} →</span>
+        {% if c.status == "soon" %}<span class="tag">In voorbereiding</span>{% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>

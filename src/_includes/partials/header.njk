@@ -1,0 +1,33 @@
+{% if brandKey != "hub" %}
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <span>Een onderdeel van <strong>MSNA Group Services</strong></span>
+    <a href="/">Alle MSNA-bedrijven <span aria-hidden="true">→</span></a>
+  </div>
+</div>
+{% endif %}
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="{{ b.home }}" aria-label="{{ b.full }} – home">
+      <img src="/assets/img/emblem.webp" alt="" width="44" height="40">
+      <span class="logo-text"><strong>MSNA</strong><small>{{ b.sub }}</small></span>
+    </a>
+    {% if b.nav.length %}
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+    <nav id="site-nav" class="nav" aria-label="Hoofdmenu">
+      <ul>
+        {% for item in b.nav %}
+        {%- set active = (page.url == item.url) or (item.prefix and page.url.startsWith(item.prefix) and page.url != item.exclude) -%}
+        <li><a href="{{ item.url }}"{% if active %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+      {% if b.cta %}<a class="btn btn-gold btn-sm" href="{{ b.cta.url }}">{{ b.cta.label }}</a>{% endif %}
+    </nav>
+    {% elif brandKey != "hub" %}
+    <a class="btn btn-ghost btn-sm" href="/group/contact/">Contact</a>
+    {% endif %}
+  </div>
+</header>

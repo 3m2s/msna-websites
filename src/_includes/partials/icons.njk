@@ -1,0 +1,17 @@
+{% macro icon(name) %}<span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{%- if name == "kantoren" -%}<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M11 21v-3h2v3"/>
+{%- elif name == "showrooms" -%}<path d="M3 21h18M5 21V9l7-5 7 5v12"/><rect x="9" y="13" width="6" height="8"/>
+{%- elif name == "sanitair" -%}<path d="M7 3v6a5 5 0 0010 0V3"/><path d="M12 14v7M8 21h8"/>
+{%- elif name == "garages" -%}<path d="M3 21V8l9-5 9 5v13"/><path d="M7 21v-8h10v8M7 17h10"/>
+{%- elif name == "stoom-dieptereiniging" -%}<path d="M8 4c-1.5 2 1.5 3 0 5M12 3c-1.5 2 1.5 3 0 5M16 4c-1.5 2 1.5 3 0 5"/><rect x="5" y="12" width="14" height="8" rx="2"/>
+{%- elif name == "periodiek-eenmalig" -%}<rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2"/>
+{%- elif name == "phone" -%}<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/>
+{%- elif name == "user" -%}<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/>
+{%- elif name == "mail" -%}<rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/>
+{%- elif name == "pin" -%}<path d="M12 21s7-6 7-12a7 7 0 00-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>
+{%- elif name == "check" -%}<path d="M5 12l5 5 9-10"/>
+{%- elif name == "shield" -%}<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>
+{%- elif name == "contact" -%}<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/>
+{%- else -%}<circle cx="12" cy="12" r="8"/>
+{%- endif -%}
+</svg></span>{% endmacro %}

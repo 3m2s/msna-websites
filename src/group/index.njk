@@ -1,0 +1,101 @@
+---
+seoTitle: "MSNA Group Services | Ondernemerschap, dienstverlening, mode en vastgoed"
+description: "MSNA Group Services – ondernemerschap, dienstverlening, mode en vastgoed onder één groep. Ontdek onze activiteiten en werk met ons samen."
+---
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">MSNA Group Services</span>
+    <h1>Ondernemerschap, dienstverlening, mode en vastgoed <span class="gold-text">onder één groep.</span></h1>
+    <p class="lead">MSNA Group Services is het professionele toegangspunt tot de groep, haar activiteiten en zakelijke contacten.</p>
+    <div class="btn-row">
+      <a class="btn btn-gold" href="#activiteiten">Ontdek onze activiteiten</a>
+      <a class="btn btn-ghost" href="/group/samenwerken/">Zakelijk samenwerken</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light" id="activiteiten">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Onze activiteiten</span>
+      <h2>Vier onderdelen, elk met een eigen focus</h2>
+      <hr class="rule">
+      <p class="lead">Elke activiteit heeft een eigen website met een volledig overzicht van diensten of producten.</p>
+    </div>
+    <div class="grid grid-2">
+      {% for c in companies %}
+      <a class="card" href="{{ c.url if c.key != 'group' else '/group/over/' }}">
+        <div class="card-num">0{{ loop.index }} — MSNA {{ c.name | upper }}</div>
+        <h3>{{ c.tagline }}</h3>
+        <p>{{ c.text }}</p>
+        <span class="more">{{ "Over de groep" if c.key == "group" else c.button }} →{% if c.status == "soon" %} <span class="tag">binnenkort</span>{% endif %}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Onze aanpak</span>
+      <h2>Hoe wij werken</h2>
+      <hr class="rule">
+    </div>
+    <div class="grid grid-4">
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></div>
+        <h3>Kwaliteit</h3>
+        <p>Werk dat klopt, met aandacht voor afwerking en opvolging in elk bedrijf van de groep.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 11l3 3 7-7"/><path d="M20 12a8 8 0 11-3.3-6.5"/></svg></div>
+        <h3>Professionele samenwerking</h3>
+        <p>Eén duidelijk aanspreekpunt voor klanten, leveranciers en partners.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
+        <h3>Duidelijke afspraken</h3>
+        <p>Wat we doen, wanneer en tegen welke voorwaarden wordt vooraf schriftelijk vastgelegd.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 18l6-6 4 4 6-8"/><path d="M14 8h6v6"/></svg></div>
+        <h3>Toekomstgericht</h3>
+        <p>We bouwen stap voor stap aan een groep die blijft groeien en vernieuwen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="wrap split split-wide">
+    <div>
+      <span class="eyebrow">Zakelijk samenwerken</span>
+      <h2>Leverancier, partner of zakelijke klant?</h2>
+      <hr class="rule">
+      <p class="lead">Wij bekijken graag welke samenwerking mogelijk is. Vertel ons wie u bent en wat u voorstelt; de bevoegde afdeling beoordeelt uw aanvraag en neemt contact met u op.</p>
+      <div class="btn-row">
+        <a class="btn btn-gold" href="/group/samenwerken/">Dien een samenwerkingsvoorstel in</a>
+      </div>
+    </div>
+    <ul class="checklist">
+      <li>Leveranciers van producten en diensten</li>
+      <li>Zakelijke partners en partnerships</li>
+      <li>Opdrachtgevers voor een van onze activiteiten</li>
+      <li>Algemene zakelijke vragen aan de groep</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div>
+      <h2>Een vraag voor de groep?</h2>
+      <p>Neem rechtstreeks contact op. Wij verwijzen u door naar het juiste MSNA-bedrijf.</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-gold" href="/group/contact/">Neem contact op</a>
+      <a class="btn btn-ghost" href="{{ site.phone | telHref }}">{{ site.phone }}</a>
+    </div>
+  </div>
+</section>

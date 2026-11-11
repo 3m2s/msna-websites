@@ -1,0 +1,16 @@
+{
+  "name": "msna-websites",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MSNA Group Services – groepsportaal en websites (Group Services, Cleaning & Support, MODE, Estate)",
+  "scripts": {
+    "start": "eleventy --serve --port=8080",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8",
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/inter": "^5.3.0"
+  }
+}

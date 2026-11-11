@@ -1,0 +1,12 @@
+{# Gedeelde status- en privacyblokken onderaan elk formulier #}
+<input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label class="check">
+  <input type="checkbox" name="privacy" value="akkoord" required>
+  <span>Ik ga akkoord met de verwerking van mijn gegevens om deze aanvraag te behandelen, zoals beschreven in de <a href="/privacy/">privacyverklaring</a>. *</span>
+</label>
+<button class="btn btn-gold" type="submit">{{ submitLabel or "Verstuur aanvraag" }}</button>
+<div class="form-status" role="status" aria-live="polite">
+  <p class="msg msg-success" hidden><strong>Bedankt voor uw aanvraag bij MSNA.</strong> Wij hebben uw bericht ontvangen. De bevoegde afdeling bekijkt uw vraag en neemt contact met u op. Voor dringende zaken kunt u ons bellen op <a href="{{ site.phone | telHref }}">{{ site.phone }}</a>.</p>
+  <p class="msg msg-pending" hidden>Het online formulier wordt binnenkort gekoppeld. Neem intussen rechtstreeks contact op via <a href="{{ site.phone | telHref }}">{{ site.phone }}</a>{% if site.email %} of <a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}.</p>
+  <p class="msg msg-error" hidden>Er ging iets mis bij het versturen. Probeer het opnieuw of bel <a href="{{ site.phone | telHref }}">{{ site.phone }}</a>.</p>
+</div>

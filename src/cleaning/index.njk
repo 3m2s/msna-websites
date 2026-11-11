@@ -1,0 +1,117 @@
+---
+seoTitle: "Zakelijke schoonmaak | MSNA Cleaning & Support"
+description: "Professionele schoonmaak voor kantoren, recepties, showrooms, sanitaire ruimten, garages en werkplaatsen. Van vast onderhoud tot stoom- en dieptereiniging. Vraag een offerte op maat."
+---
+{% from "partials/icons.njk" import icon %}
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">MSNA Cleaning & Support</span>
+    <h1>Professionele schoonmaak voor een <span class="gold-text">verzorgde werkomgeving</span></h1>
+    <p class="lead">MSNA Cleaning & Support ondersteunt bedrijven bij het schoonhouden van kantoren, recepties, showrooms, sanitaire ruimten en andere zakelijke locaties. Van terugkerend onderhoud tot gerichte dieptereiniging: wij stemmen de werkzaamheden af op de ruimte, de gebruiksintensiteit en uw verwachtingen.</p>
+    <div class="btn-row">
+      <a class="btn btn-gold" href="/cleaning/offerte/">Vraag een offerte op maat</a>
+      <a class="btn btn-ghost" href="/cleaning/offerte/?type=plaatsbezoek#formulier">Plan een plaatsbezoek</a>
+    </div>
+    <p class="hero-meta">Liever meteen bellen? <a class="gold-text" href="{{ site.phone | telHref }}"><strong>{{ site.phone }}</strong></a></p>
+  </div>
+</section>
+
+<section class="section section-light" id="diensten">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Onze dienstverlening</span>
+      <h2>Schoonmaak afgestemd op uw type ruimte</h2>
+      <hr class="rule">
+      <p class="lead">Kies een dienst voor alle details: wat inbegrepen kan worden, welke frequenties mogelijk zijn en wat we vooraf met u afspreken.</p>
+    </div>
+    <div class="grid grid-3">
+      {% for s in cleaningServices %}
+      <a class="card" href="/cleaning/diensten/{{ s.slug }}/">
+        {{ icon(s.slug) }}
+        <h3>{{ s.short }}</h3>
+        <p>{{ s.card }}</p>
+        <span class="more">Meer over deze dienst →</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow">Sectoren</span>
+      <h2>Voor wie wij werken</h2>
+      <hr class="rule">
+      <p>Wij werken voor professionele ruimtes waar netheid en presentatie belangrijk zijn – van het kantoor tot de werkplaats.</p>
+      <ul class="chips">
+        <li>Autogarages en autobedrijven</li>
+        <li>Showrooms</li>
+        <li>Kantoren</li>
+        <li>Recepties en ontvangstruimten</li>
+        <li>Werkplaatsen</li>
+        <li>Bedrijfsruimtes</li>
+      </ul>
+    </div>
+    <div>
+      <span class="eyebrow">Waarom MSNA</span>
+      <h2>Een aanpak op maat</h2>
+      <hr class="rule">
+      <p>Geen twee bedrijfslocaties zijn hetzelfde. Daarom bespreken we eerst de ruimtes, bereikbaarheid, gewenste frequentie en specifieke aandachtspunten. Vervolgens leggen we de werkzaamheden en afspraken overzichtelijk vast. Zo weet u vooraf wat uitgevoerd wordt.</p>
+      <ul class="checklist">
+        <li>Eén vast aanspreekpunt</li>
+        <li>Duidelijke, schriftelijke afspraken</li>
+        <li>Kwaliteitscontrole en opvolging</li>
+        <li>Beperkt gebruik van chemische producten waar mogelijk</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Onze aanpak</span>
+      <h2>Zo werken wij</h2>
+      <hr class="rule">
+    </div>
+    <ol class="steps grid-cols">
+      <li><strong>Kennismaking</strong><p>U beschrijft welke ruimtes onderhouden moeten worden en wat uw verwachtingen zijn.</p></li>
+      <li><strong>Plaatsbezoek</strong><p>Waar nodig bekijken we oppervlaktes, gebruik, toegang, vervuiling en relevante risico's.</p></li>
+      <li><strong>Voorstel op maat</strong><p>U ontvangt een duidelijke taakomschrijving, frequentie en prijsafspraken.</p></li>
+      <li><strong>Uitvoering</strong><p>De overeengekomen werkzaamheden worden volgens de praktische afspraken uitgevoerd.</p></li>
+      <li><strong>Evaluatie</strong><p>We stemmen kwaliteitscontrole en eventuele bijsturing vooraf met u af.</p></li>
+    </ol>
+    <p class="center" style="margin-top:2rem"><a class="btn btn-ghost" href="/cleaning/werkwijze/">Lees meer over onze werkwijze</a></p>
+  </div>
+</section>
+
+<section class="section section-light">
+  <div class="wrap split split-wide">
+    <div>
+      <span class="eyebrow">Veelgestelde vragen</span>
+      <h2>Goed om te weten</h2>
+      <hr class="rule">
+      {% include "partials/faq-cleaning.njk" %}
+    </div>
+    <aside class="card card-dark" style="position:sticky;top:calc(var(--header-h) + 20px)">
+      <h3>Direct contact</h3>
+      <p>Bespreek uw locatie rechtstreeks met {{ site.contactName }}.</p>
+      <p><a class="gold-text" style="font-size:1.4rem;text-decoration:none" href="{{ site.phone | telHref }}"><strong>{{ site.phone }}</strong></a></p>
+      <a class="btn btn-gold" href="/cleaning/offerte/">Vraag een offerte op maat</a>
+    </aside>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div>
+      <h2>Op zoek naar een vaste schoonmaakpartner?</h2>
+      <p>Of juist een eenmalige grondige reiniging? Vertel ons over uw locatie. Wij bekijken graag welke oplossing past bij uw onderneming.</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-gold" href="/cleaning/offerte/">Vraag een offerte op maat</a>
+      <a class="btn btn-ghost" href="/cleaning/diensten/">Bekijk onze diensten</a>
+    </div>
+  </div>
+</section>

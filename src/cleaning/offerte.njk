@@ -1,0 +1,125 @@
+---
+title: Offerte aanvragen
+permalink: /cleaning/offerte/
+seoTitle: "Offerte professionele schoonmaak aanvragen | MSNA"
+description: "Vraag een vrijblijvende offerte of plaatsbezoek aan bij MSNA Cleaning & Support. Kort formulier, persoonlijke opvolging."
+---
+{% from "partials/icons.njk" import icon %}
+<section class="hero hero-sm">
+  <div class="wrap">
+    <p class="breadcrumb"><a href="/cleaning/">Home</a> / Offerte aanvragen</p>
+    <span class="eyebrow">Offerte & contact</span>
+    <h1>Vraag een offerte op maat</h1>
+    <p class="lead">Vertel ons over uw locatie en de gewenste werkzaamheden. Wij nemen contact op om de volgende stap te bespreken – vaak een vrijblijvend plaatsbezoek.</p>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="wrap split split-wide">
+    <div class="form-card" id="formulier">
+      <h2 style="font-size:2.1rem">Uw aanvraag</h2>
+      <p style="color:var(--muted)">Velden met <span class="req">*</span> zijn verplicht.</p>
+      <form class="form" data-form data-endpoint="{{ site.formEndpoint }}" action="{{ site.formEndpoint or '#' }}" method="post">
+        <input type="hidden" name="_subject" value="Offerteaanvraag via MSNA Cleaning & Support">
+        <input type="hidden" name="website" value="Cleaning & Support">
+
+        <fieldset>
+          <legend>Wat wenst u? <span class="req">*</span></legend>
+          <div class="radios">
+            <label><input type="radio" name="aanvraag" value="offerte" checked> Offerte</label>
+            <label><input type="radio" name="aanvraag" value="plaatsbezoek"> Plaatsbezoek</label>
+            <label><input type="radio" name="aanvraag" value="vraag"> Algemene vraag</label>
+          </div>
+        </fieldset>
+
+        <div class="form-row">
+          <div class="field"><label for="o-company">Bedrijfsnaam <span class="req">*</span></label><input id="o-company" name="bedrijf" required autocomplete="organization"></div>
+          <div class="field"><label for="o-name">Contactpersoon <span class="req">*</span></label><input id="o-name" name="contactpersoon" required autocomplete="name"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="o-email">E-mailadres <span class="req">*</span></label><input id="o-email" type="email" name="email" required autocomplete="email"></div>
+          <div class="field"><label for="o-phone">Telefoon <span class="req">*</span></label><input id="o-phone" type="tel" name="telefoon" required autocomplete="tel"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="o-zip">Postcode <span class="req">*</span></label><input id="o-zip" name="postcode" required autocomplete="postal-code"></div>
+          <div class="field"><label for="o-loc">Adres / gemeente schoonmaaklocatie <span class="req">*</span></label><input id="o-loc" name="locatie" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="o-type">Type dienst <span class="req">*</span></label>
+            <select id="o-type" name="dienst" required>
+              <option value="">Maak een keuze</option>
+              {% for s in cleaningServices %}<option value="{{ s.slug }}">{{ s.short }}</option>{% endfor %}
+              <option value="anders">Anders / combinatie</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="o-freq">Frequentie <span class="req">*</span></label>
+            <select id="o-freq" name="frequentie" required>
+              <option value="">Maak een keuze</option>
+              <option>Dagelijks</option>
+              <option>Wekelijks</option>
+              <option>Periodiek</option>
+              <option>Eenmalig</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="o-desc">Korte omschrijving van de opdracht <span class="req">*</span></label>
+          <textarea id="o-desc" name="omschrijving" required placeholder="Welke ruimtes, welke taken, bijzonderheden…"></textarea>
+        </div>
+
+        <details>
+          <summary style="cursor:pointer;font-weight:600;font-size:.9rem;color:var(--gold-deep)">+ Optionele details (helpt ons sneller een voorstel te maken)</summary>
+          <div class="form" style="margin-top:1rem">
+            <div class="form-row">
+              <div class="field"><label for="o-kbo">Ondernemingsnummer</label><input id="o-kbo" name="ondernemingsnummer"></div>
+              <div class="field"><label for="o-m2">Oppervlakte (m²)</label><input id="o-m2" name="oppervlakte" inputmode="numeric"></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label for="o-start">Gewenste startdatum</label><input id="o-start" type="date" name="startdatum"></div>
+              <div class="field"><label for="o-visit">Voorkeursdatum plaatsbezoek</label><input id="o-visit" type="date" name="plaatsbezoek"></div>
+            </div>
+            <div class="field"><label for="o-window">Gewenst tijdvenster</label><input id="o-window" name="tijdvenster" placeholder="bv. na 18u, in het weekend…"></div>
+            <div class="field"><label for="o-safety">Veiligheid / toegang</label><textarea id="o-safety" name="veiligheid" style="min-height:90px" placeholder="Alarm, sleutels, machines, risico's…"></textarea></div>
+            <p class="hint" style="font-size:.85rem;color:var(--muted)">Foto's van de ruimte of de vervuiling kunt u na ons eerste contact doorsturen.</p>
+          </div>
+        </details>
+
+        {% set submitLabel = "Verstuur aanvraag" %}
+        {% include "partials/form-status.njk" %}
+      </form>
+    </div>
+
+    <div id="contact">
+      <span class="eyebrow">Direct contact</span>
+      <h2>Liever even bellen?</h2>
+      <hr class="rule">
+      <ul class="contact-list">
+        <li>{{ icon("phone") }}<div><small>Telefoon</small><a href="{{ site.phone | telHref }}">{{ site.phone }}</a></div></li>
+        <li>{{ icon("user") }}<div><small>Contactpersoon</small>{{ site.contactName }}</div></li>
+        {% if site.email %}<li>{{ icon("mail") }}<div><small>E-mail</small><a href="mailto:{{ site.email }}">{{ site.email }}</a></div></li>{% endif %}
+        {% if site.address %}<li>{{ icon("pin") }}<div><small>Adres</small>{{ site.address }}</div></li>{% endif %}
+      </ul>
+
+      <h3>Wat gebeurt er na uw aanvraag?</h3>
+      <ol class="steps" style="gap:.8rem">
+        <li><strong>Kennismaking</strong><p>We bespreken het type locatie en uw verwachtingen.</p></li>
+        <li><strong>Plaatsbezoek</strong><p>Vrijblijvend: oppervlakte, vervuiling, toegang en veiligheid.</p></li>
+        <li><strong>Heldere offerte</strong><p>Afgebakende prijs, opties en voorwaarden.</p></li>
+      </ol>
+      <p class="note" style="margin-top:1.5rem">Prijs en inbegrepen taken worden pas bindend na schriftelijk akkoord. Een aanvraag is vrijblijvend.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light">
+  <div class="wrap narrow">
+    <div class="section-head">
+      <span class="eyebrow">Veelgestelde vragen</span>
+      <h2>Vragen over een offerte</h2>
+      <hr class="rule">
+    </div>
+    {% include "partials/faq-cleaning.njk" %}
+  </div>
+</section>
