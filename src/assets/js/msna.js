@@ -39,7 +39,8 @@
     hideMsg();
 
     var email = (form.querySelector('[name="email"]') || {}).value || '';
-    var company = (form.querySelector('[name="company"]') || {}).value || '';
+    var companyEl = form.querySelector('[name="company"][required]');
+    var company = companyEl ? companyEl.value : 'n.v.t.';
     var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 
     if (!company.trim()){

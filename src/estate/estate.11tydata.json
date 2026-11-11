@@ -1,1 +1,5 @@
-{ "brand": "estate" }
+{
+  "layout": "layouts/msna-site.njk",
+  "siteKey": "estate",
+  "lang": "nl"
+}

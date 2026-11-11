@@ -1,20 +1,23 @@
 ---
-title: Privacyverklaring en cookies
+title: "Privacyverklaring en cookies | MSNA Group Services"
 permalink: /privacy/
 description: "Hoe MSNA Group Services en haar bedrijven omgaan met persoonsgegevens en cookies."
-brand: group
+layout: layouts/msna-site.njk
+siteKey: group
+lang: nl
+pageKey: privacy
 ---
-<section class="hero hero-sm">
+<div class="page-head">
   <div class="wrap">
-    <span class="eyebrow">Juridisch</span>
+    <p class="eyebrow">Juridisch</p>
     <h1>Privacyverklaring en cookies</h1>
-    <p class="lead">Geldt voor alle websites van MSNA Group Services: Group Services, Cleaning & Support, MODE en Estate.</p>
+    <p class="lead">Geldt voor alle websites van MSNA Group Services: Group Services, Cleaning & Support, MSNA-Mode en Estate.</p>
   </div>
-</section>
+</div>
 
-<section class="section section-light">
-  <div class="wrap narrow">
-    <p class="note"><strong>Concepttekst.</strong> Deze privacyverklaring is een eerste versie en wordt vóór de officiële lancering juridisch nagekeken en aangevuld met de definitieve ondernemingsgegevens.</p>
+<section>
+  <div class="wrap prose" style="max-width:780px;">
+    <div class="callout" style="margin-top:0;"><p><strong>Concepttekst.</strong> Deze privacyverklaring is een eerste versie en wordt vóór de officiële lancering juridisch nagekeken en aangevuld met de definitieve ondernemingsgegevens.</p></div>
 
     <h2>Wie is verantwoordelijk?</h2>
     <p>{{ site.groupName }}{% if site.companyNumber %}, ondernemingsnummer {{ site.companyNumber }}{% endif %}{% if site.address %}, {{ site.address }}{% endif %}. Contact: {{ site.contactName }}, <a href="{{ site.phone | telHref }}">{{ site.phone }}</a>{% if site.email %}, <a href="mailto:{{ site.email }}">{{ site.email }}</a>{% endif %}.</p>

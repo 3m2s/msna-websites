@@ -216,13 +216,40 @@ footer.site{ border-top:1px solid var(--line-soft); padding:52px 0 32px; }
 /* ---------- Fix (conversie nov. 2026): logo-tekst overlapte het menu ----------
    Het volledige menu past niet naast de woordmerk-tekst binnen 1140px.
    Bredere balk op grote schermen, logo krimpt niet, en het hamburgermenu
-   verschijnt al vanaf 1240px i.p.v. 900px. */
-header.site .bar{ max-width:1320px; }
+   verschijnt al vanaf 1280px i.p.v. 900px. */
+header.site .bar{ max-width:1400px; }
 .brand{ flex-shrink:0; }
 nav.main{ gap:1.35rem; }
-@media (max-width:1240px){
+@media (max-width:1280px){
   nav.main{ position:fixed; top:60px; left:0; right:0; height:calc(100vh - 60px); background:var(--bg); flex-direction:column; align-items:flex-start; padding:2rem 24px; gap:1.6rem; transform:translateY(-110%); transition:transform .25s ease; overflow-y:auto; z-index:39; }
   nav.main.open{ transform:translateY(0); }
   nav.main a{ font-size:1.05rem; }
   .menu-toggle{ display:inline-flex; }
+}
+
+/* ---------- "MSNA home"-knop: terug naar de startpagina met alle bedrijven ---------- */
+.home-btn{ display:inline-flex; align-items:center; gap:.45em; text-decoration:none; color:var(--ink-dim); border:1px solid var(--line); border-radius:2px; padding:.5em .85em; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; transition:all .18s ease; }
+.home-btn svg{ width:15px; height:15px; flex:none; }
+.home-btn:hover{ color:var(--gold-bright); border-color:var(--gold); }
+@media (max-width:1440px){ .home-btn{ padding:0; width:38px; height:38px; justify-content:center; } .home-btn span{ display:none; } }
+
+/* ---------- Extra bouwstenen voor Group Services en Estate ---------- */
+.prose h2{ font-size:1.35rem; margin:2.2rem 0 .8rem; }
+.prose p, .prose li{ color:var(--ink-dim); font-size:.95rem; }
+.prose ul{ padding-left:1.2rem; }
+.prose a{ color:var(--gold); }
+.card .tag-soon{ display:inline-block; margin-left:.6em; font-family:'Jost',sans-serif; font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); border:1px solid var(--line); padding:.2em .5em; border-radius:2px; vertical-align:middle; }
+
+/* ---------- Telefoon: alles past naast elkaar ----------
+   Woordmerk op twee regels, taalkeuze verhuist naar het uitklapmenu. */
+nav.main .nav-langs{ display:none; }
+@media (max-width:600px){
+  .brand{ flex-shrink:1; min-width:0; }
+  .brand .wordmark{ font-size:.74rem; letter-spacing:.08em; white-space:normal; line-height:1.25; }
+  .brand .wordmark b{ display:block; }
+  .brand .sub{ display:none; }
+  .head-right{ gap:.5rem; }
+  .head-right .lang-switch{ display:none; }
+  nav.main .nav-langs{ display:flex; gap:.8rem; font-size:.95rem; padding-top:1rem; border-top:1px solid var(--line-soft); width:100%; }
+  nav.main .nav-langs a{ font-size:.95rem; }
 }

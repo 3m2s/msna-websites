@@ -5,8 +5,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
-  // Eigen stijl, script en logo van de Cleaning- en MODE-sites
-  eleventyConfig.addPassthroughCopy("src/cleaning/assets");
+  // Eigen stijl, script en logo van de MODE-site
   eleventyConfig.addPassthroughCopy("src/mode/assets");
 
   // Lettertypes lokaal hosten (geen Google Fonts = geen extra cookies/tracking)

@@ -12,7 +12,7 @@ Startpagina plus vier websites voor MSNA Group Services, gebouwd met [Eleventy](
 | `/privacy/` | Privacyverklaring en cookies (gedeeld) | concept |
 
 `/cleaning/` en `/mode/` kiezen automatisch de taal van de browser (NL/FR, anders EN).
-Beide sites hebben hun eigen ontwerp (Bodoni Moda + Jost) en zijn omgezet vanuit de oorspronkelijke HTML-bestanden.
+Cleaning & Support, Group Services en Estate delen één ontwerp (zwart/goud, Bodoni Moda + Jost), afkomstig van de oorspronkelijke Cleaning-site. MSNA-Mode heeft een eigen editorial ontwerp. Elke site heeft rechtsboven een **MSNA home**-knop terug naar de startpagina.
 
 ## Lokaal bekijken
 
@@ -26,18 +26,17 @@ npm start        # http://localhost:8080
 | Wat | Bestand |
 |---|---|
 | Telefoon, contactpersoon, e-mail, adres, ondernemingsnummer, formulier-endpoint | `src/_data/site.js` |
-| Menu's en knoppen (hub, Group, Estate) | `src/_data/brands.js` |
 | De vier bedrijfstegels (hub, footer, groepssite) | `src/_data/companies.js` |
 | Pagina's | `src/group/`, `src/cleaning/<taal>/`, `src/mode/<taal>/`, `src/estate/` |
-| Huisstijl hub/Group/Estate | `src/assets/css/style.css` |
-| **Cleaning & Support:** menu, footer en teksten per taal | `src/_data/cleaningSite.js` |
-| **Cleaning & Support:** header/footer-opmaak | `src/_includes/layouts/cleaning-site.njk` |
-| **Cleaning & Support:** stijl en script | `src/cleaning/assets/` |
+| **Cleaning, Group, Estate:** menu, footer en teksten (per taal) | `src/_data/sites.js` |
+| **Cleaning, Group, Estate:** gedeelde header/footer | `src/_includes/layouts/msna-site.njk` |
+| **Cleaning, Group, Estate:** stijl en script | `src/assets/css/msna.css`, `src/assets/js/msna.js` |
+| Startpagina (hub): stijl en tekst | `src/index.njk`, `src/assets/css/style.css`, `src/_data/brands.js` |
 | **MODE:** stijl, wachtlijst-script | `src/mode/assets/` |
 
-Elke Cleaning-pagina (bv. `src/cleaning/nl/services.njk`) bevat alleen de eigen inhoud; header, menu, taalkeuze en footer komen uit de gedeelde layout.
+Elke pagina (bv. `src/cleaning/nl/services.njk` of `src/group/over.njk`) bevat alleen de eigen inhoud; header, menu, taalkeuze, home-knop en footer komen uit de gedeelde layout.
 
-Estate wordt een volwaardige site door pagina's toe te voegen in `src/estate/`, een menu in `brands.js` te zetten en `status` in `companies.js` op `"live"` te zetten.
+Estate wordt een volwaardige site door pagina's toe te voegen in `src/estate/`, ze in het menu van `estate` in `sites.js` te zetten en `status` in `companies.js` op `"live"` te zetten.
 
 ## Formulieren koppelen
 

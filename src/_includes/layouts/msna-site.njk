@@ -1,0 +1,88 @@
+{#- Gedeelde layout voor Cleaning & Support, Group Services en Estate.
+    Nodig in de front matter: siteKey (cleaning|group|estate), lang, pageKey, title. -#}
+{%- set s = sites[siteKey] -%}
+{%- set t = s.t[lang] -%}
+{%- macro url(key, l) -%}
+{%- set slug = s.slugs[key][l] -%}
+{%- if slug.startsWith("/") -%}{{ slug }}{%- else -%}{{ s.base }}{% if s.langs.length > 1 %}{{ l }}/{% endif %}{{ slug }}{%- endif -%}
+{%- endmacro -%}
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ title }}</title>
+{% if description %}<meta name="description" content="{{ description }}">{% endif %}
+{% if s.langs.length > 1 %}{% for l in s.langs %}<link rel="alternate" hreflang="{{ l }}" href="{{ url(pageKey, l) }}">
+{% endfor %}{% endif %}<link rel="icon" type="image/png" href="/assets/img/logo-mark.png">
+<meta property="og:image" content="/assets/img/og.jpg">
+<link rel="stylesheet" href="/assets/css/fonts-msna.css">
+<link rel="stylesheet" href="/assets/css/msna.css">
+</head>
+<body>
+<header class="site">
+  <div class="bar">
+    <a class="brand" href="{{ url('home', lang) }}">
+      <img src="/assets/img/logo-mark.png" alt="MSNA emblem">
+      <span>
+        <span class="wordmark">MSNA <b>{{ s.wordmark | safe }}</b></span>
+        <span class="sub">{{ t.sub }}</span>
+      </span>
+    </a>
+    <nav class="main">
+      {% for key in s.navOrder %}<a href="{{ url(key, lang) }}"{% if key == pageKey %} class="active" aria-current="page"{% endif %}>{{ t.nav[key] }}</a>
+      {% endfor %}
+      {% if s.langs.length > 1 %}<div class="lang-switch nav-langs">{% for l in s.langs %}{% if not loop.first %}<span class="sep">/</span>{% endif %}<a{% if l == lang %} class="current"{% endif %} href="{{ url(pageKey, l) }}" hreflang="{{ l }}">{{ l | upper }}</a>{% endfor %}</div>{% endif %}
+    </nav>
+    <div class="head-right">
+      <a class="home-btn" href="/" title="{{ sites.homeButton[lang] }}" aria-label="{{ sites.homeButton[lang] }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 9.5V20h5v-5.5h3V20h5V9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <span>{{ sites.homeButton[lang] }}</span>
+      </a>
+      {% if s.langs.length > 1 %}<div class="lang-switch">{% for l in s.langs %}{% if not loop.first %}<span class="sep">/</span>{% endif %}<a{% if l == lang %} class="current"{% endif %} href="{{ url(pageKey, l) }}" hreflang="{{ l }}">{{ l | upper }}</a>{% endfor %}</div>{% endif %}
+      <a class="btn btn-gold btn-sm hide-mobile" href="{{ url(s.ctaKey, lang) }}">{{ t.cta }}</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</header>
+{{ content | safe }}
+  <div class="group-strip">
+    <div class="wrap row">
+      <p>{{ t.strip }}</p>
+      <span>
+        {% for link in t.stripLinks %}<a class="other-site" href="{{ link.url }}">{{ link.label }} &rarr;<span class="tag">{{ link.tag }}</span></a>&nbsp;·&nbsp; {% endfor %}<a class="other-site" href="/">{{ sites.homeButton[lang] }} &rarr;</a>
+      </span>
+    </div>
+  </div>
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-brand">
+            <img src="/assets/img/logo-mark.png" alt="MSNA emblem">
+            <span class="wordmark">MSNA <b>{{ s.wordmark | safe }}</b></span>
+          </div>
+          <p>{{ t.blurb }}</p>
+        </div>
+        <div>
+          <h4>{{ t.navHeading }}</h4>
+          <ul>{% for key in s.navOrder %}<li><a href="{{ url(key, lang) }}">{{ t.nav[key] }}</a></li>{% endfor %}</ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="{{ site.phone | telHref }}">{{ site.phone }}</a></li>
+            {% set mail = s.email or site.email %}{% if mail %}<li><a href="mailto:{{ mail }}">{{ mail }}</a></li>{% endif %}
+            <li>{{ site.contactName }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>{{ t.bottom }} · <a href="/privacy/">{{ t.privacy }}</a></span>
+      </div>
+    </div>
+  </footer>
+  <script>window.MSNA_FORM_CONFIG = window.MSNA_FORM_CONFIG || null;</script>
+  <script src="/assets/js/msna.js"></script>
+</body>
+</html>

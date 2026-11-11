@@ -1,66 +1,53 @@
 ---
-title: Zakelijk samenwerken
+pageKey: partners
+title: "Zakelijk samenwerken | MSNA Group Services"
 permalink: /group/samenwerken/
 description: "Leverancier, partner of opdrachtgever? Dien een samenwerkingsvoorstel in bij MSNA Group Services."
 ---
-<section class="hero hero-sm">
-  <div class="wrap">
-    <p class="breadcrumb"><a href="/group/">Home</a> / Samenwerken</p>
-    <span class="eyebrow">Zakelijke samenwerking</span>
-    <h1>Samenwerken met MSNA</h1>
-    <p class="lead">Voor leveranciers, zakelijke partners en potentiële opdrachtgevers.</p>
-  </div>
-</section>
-
-<section class="section section-cream">
-  <div class="wrap split">
-    <div>
-      <h2>Welke samenwerking is bespreekbaar?</h2>
-      <hr class="rule">
-      <ul class="checklist">
-        <li>Levering van producten of diensten aan een van onze bedrijven</li>
-        <li>Partnerships en gezamenlijke projecten</li>
-        <li>Opdrachten voor MSNA Cleaning & Support, MODE of Estate</li>
-      </ul>
-      <h3>Hoe beoordelen wij uw aanvraag?</h3>
-      <ol class="steps">
-        <li><strong>Ontvangst</strong><p>U ontvangt een bevestiging dat uw voorstel is binnengekomen.</p></li>
-        <li><strong>Beoordeling</strong><p>De bevoegde afdeling bekijkt of het voorstel aansluit bij onze activiteiten.</p></li>
-        <li><strong>Contact</strong><p>Wij nemen contact op om het voorstel verder te bespreken of laten u weten waarom het niet past.</p></li>
-      </ol>
-    </div>
-
-    <div class="form-card">
-      <h2 style="font-size:2rem">Samenwerkingsvoorstel</h2>
-      <form class="form" data-form data-endpoint="{{ site.formEndpoint }}" action="{{ site.formEndpoint or '#' }}" method="post">
-        <input type="hidden" name="_subject" value="Samenwerkingsvoorstel via MSNA Group Services">
-        <input type="hidden" name="website" value="Group Services">
-        <div class="field">
-          <label for="sw-type">Type samenwerking <span class="req">*</span></label>
-          <select id="sw-type" name="type" required>
-            <option value="">Maak een keuze</option>
-            <option>Leverancier</option>
-            <option>Partnership</option>
-            <option>Zakelijke opdracht</option>
-            <option>Andere</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <div class="field"><label for="sw-company">Onderneming <span class="req">*</span></label><input id="sw-company" name="onderneming" required autocomplete="organization"></div>
-          <div class="field"><label for="sw-name">Contactpersoon <span class="req">*</span></label><input id="sw-name" name="naam" required autocomplete="name"></div>
-        </div>
-        <div class="form-row">
-          <div class="field"><label for="sw-email">E-mail <span class="req">*</span></label><input id="sw-email" type="email" name="email" required autocomplete="email"></div>
-          <div class="field"><label for="sw-phone">Telefoon</label><input id="sw-phone" type="tel" name="telefoon" autocomplete="tel"></div>
-        </div>
-        <div class="field">
-          <label for="sw-msg">Uw voorstel <span class="req">*</span></label>
-          <textarea id="sw-msg" name="voorstel" required placeholder="Wie bent u, wat stelt u voor en voor welk MSNA-bedrijf?"></textarea>
-          <span class="hint">Bijlagen kunt u na ons eerste contact doorsturen.</span>
-        </div>
-        {% set submitLabel = "Dien voorstel in" %}
-        {% include "partials/form-status.njk" %}
-      </form>
+  <div class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Samenwerken</p>
+      <h1>Samenwerken met MSNA</h1>
+      <p class="lead">Voor leveranciers, zakelijke partners en potentiële opdrachtgevers. Vertel ons wie u bent en wat u voorstelt.</p>
     </div>
   </div>
-</section>
+  <section>
+    <div class="wrap">
+      <div class="form-wrap">
+        <div id="quote-form-panel">
+          <form class="quote" id="quote-form">
+            <input type="hidden" name="_subject" value="Samenwerkingsvoorstel via MSNA Group Services">
+            <input type="hidden" name="website" value="Group Services – samenwerken">
+            <div class="field"><label>Type samenwerking</label><select name="type" required><option>Leverancier</option><option>Partnership</option><option>Zakelijke opdracht</option><option>Andere</option></select></div>
+            <div class="form-row">
+              <div class="field"><label>Onderneming</label><input type="text" name="company" required autocomplete="organization"></div>
+              <div class="field"><label>Contactpersoon</label><input type="text" name="contact_person" required autocomplete="name"></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>E-mailadres</label><input type="email" name="email" required autocomplete="email"></div>
+              <div class="field"><label>Telefoon <span class="opt">(optioneel)</span></label><input type="tel" name="phone" autocomplete="tel"></div>
+            </div>
+            <div class="field"><label>Uw voorstel</label><textarea name="proposal" required placeholder="Wie bent u, wat stelt u voor en voor welk MSNA-bedrijf?"></textarea></div>
+            <div class="radio-group"><label><input type="checkbox" name="privacy" value="akkoord" required> Ik ga akkoord met de verwerking van mijn gegevens volgens de&nbsp;<a href="/privacy/" style="color:var(--gold);">privacyverklaring</a>.</label></div>
+            <p style="font-size:.78rem;color:var(--ink-faint);">Bijlagen kunt u na ons eerste contact doorsturen.</p>
+            <div id="quote-form-msg" class="form-msg"></div>
+            <button type="submit" class="btn btn-gold">Dien voorstel in</button>
+          </form>
+        </div>
+        <div id="quote-form-success" class="form-success-panel" style="display:none;">
+          <h3>Voorstel ontvangen</h3>
+          <p>Bedankt voor uw aanvraag bij MSNA. De bevoegde afdeling bekijkt uw voorstel en neemt contact met u op.</p>
+        </div>
+
+        <div class="side-info">
+          <p class="eyebrow">Hoe beoordelen wij uw voorstel?</p>
+          <div class="steps" style="margin-top:0;">
+            <div class="step"><div class="n">01</div><div><h3>Ontvangst</h3><p>U ontvangt een bevestiging dat uw voorstel is binnengekomen.</p></div></div>
+            <div class="step"><div class="n">02</div><div><h3>Beoordeling</h3><p>De bevoegde afdeling bekijkt of het voorstel aansluit bij onze activiteiten.</p></div></div>
+            <div class="step"><div class="n">03</div><div><h3>Contact</h3><p>Wij nemen contact op om het voorstel verder te bespreken.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% include "partials/form-config-nl.njk" %}
